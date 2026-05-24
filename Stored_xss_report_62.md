@@ -13,14 +13,18 @@ I identified a stored Cross-Site Scripting (XSS) vulnerability in **MY profile t
 ---
 ## Vulnerable Endpoint
 ```
-https://kzlabs.com/62.php
+http://kzlabs.com/62.php
 ```
 ---
 ## Steps to Reproduce
-1. Go to the application at `https://kzlabs.com/62.php` 
-2. Navigate to the **My Profile** tab.
-3. Fill in the all the fields with any value.
-4. In the **signature** field, enter the following payload:
+1. Create Acronis Forum account
+2. Log in to the account using following URL
+```
+http://kzlabs.com/62.php
+```
+4. Navigate to the **My Profile** tab.
+5. Fill in the all the fields with any value.
+6. In the **signature** field, enter the following payload:
 ```
 "><img src=x onerror=alert(1)>
 ```
