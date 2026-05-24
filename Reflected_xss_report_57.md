@@ -8,7 +8,7 @@ Reflected XSS
 
 ---
 ## Summary
-I identified a reflected XSS in the `returnTo` parameter of the following endpoint. The parameter value is reflected directly into an <a href> tag without sanitization, allowing JavaScript execution when the link is clicked. 
+I identified a reflected XSS in the `returnTo` parameter of the following endpoint. The parameter value is reflected directly into an href tag without sanitization, allowing JavaScript execution when the link is clicked. 
 
 ---
 ## Vulnerable Endpoint
