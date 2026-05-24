@@ -27,7 +27,8 @@ Injection point - **Report Name feild** when creating a New Network Report
 
 ## Steps to Reproduce
 
-1. Log in to the following application
+1. create  Adplus account
+2. Log in to the account  
 ```
 http://kzlabs.com/60.php
 ```
