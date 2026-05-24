@@ -8,7 +8,7 @@ Reflected XSS
 
 ---
 ## Summary
-I identified a relfelcted XSS in the URL path segment of the following endpoint. The path segment between account/username/messages, the username segment in the URL path is reflected raw into a double-quoted `href` attribute without sanitization. Since the username is placed directly inside an `href` attribute without escaping, an attacker can break out of the attribute by allowing JavaScript execution through an event handler injection.
+
 ---
 ## Vulnerable Endpoint
 ```
