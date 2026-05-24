@@ -24,11 +24,11 @@ https://kzlabs.com/59.php/svc/shreddit/api/comments/askreddit/{POST_ID}/t1_COMME
 https://kzlabs.com/59.php/svc/shreddit/api/comments/askreddit/hello123%20onmouseover=alert(1)/t1_i5u8kpl
 ```
 3.wait for the page to load
-4. Since there are no quotes to break out of, a single space is all that is needed to inject a new attribute. Craft the following payload:
+
+4. Since there are no quotes to break out of, a single space is all that is needed to inject a new attribute. 
 ```
-hello123 onmouseover=alert(1)
 ```
-6. The page loads and hovering over the See More Comments button triggers the alert box displaying `1` confirming the payload injected a new attribute and executed.
+5. The page loads and hovering over the See More Comments button triggers the alert box displaying `1` confirming the payload injected a new attribute and executed.
 
 ---
 ## Payload Used
@@ -39,7 +39,7 @@ hello123 onmouseover=alert(1)
 ---
 ## Proof of Concept
 
-**Screenshot 1** — Page source showing the POST_ID value `hello123` reflected raw inside the unquoted `id` attribute of the See More Comments button at line 711, with the source comment clearly stating "$post_id is echoed raw into an UNQUOTED id attribute. A space in the post_id injects a new HTML attribute directly" confirming the exact injection point.
+**Screenshot 1** — Page source showing the POST_ID value `tix5uni` reflected raw inside the unquoted `id` attribute of the See More Comments button at line 711, with the source comment clearly stating "$post_id is echoed raw into an UNQUOTED id attribute. A space in the post_id injects a new HTML attribute directly" confirming the exact injection point.
 
 <img width="1901" height="915" alt="Screenshot 2026-05-24 033953" src="https://github.com/user-attachments/assets/1f471823-713f-48a3-8e43-4675bb861263" />
 
@@ -51,11 +51,9 @@ hello123 onmouseover=alert(1)
 
 ---
 ## Impact
+- cookie stealing
+- Account takeover
 - An attacker can craft a malicious URL and share it anywhere on the platform and the moment a user hovers over the See More Comments button the script fires
-- Steal session cookies of anyone who visits the crafted URL giving the attacker full access to their Reddit account
-- What makes this interesting is that there are no quotes to break out of making it a less obvious injection point that is easy to miss during code review
-- Can be used to silently redirect victims to fake login pages to harvest credentials
-- Since Reddit is a massively visited platform and comment threads are shared widely the attack surface for distributing this crafted URL is extremely large
 
 ---
 ## Remediation
