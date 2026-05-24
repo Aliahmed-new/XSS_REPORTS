@@ -8,7 +8,7 @@ Reflected XSS
 
 ---
 ## Summary
-The PUBG community contains a reflected XSS vulnerability in its search functionality. User supplied input is embedded directly into a data-query HTML attribute without any encoding - a source code itslef includes a comment that the p parameter inserted without htmlspecialchars. an attacker can break out of the attribute context and inject event handlers such as onmouseover to exceute arbitrary JavaScript, no HTML tags requried.
+The PUBG community contains a reflected XSS vulnerability in its search functionality. User supplied input is embedded directly into a data-query HTML attribute without any encoding - a source code itslef includes a comment that the p parameter inserted without htmlspecialchars.
 
 ---
 ## Vulnerable Endpoint
@@ -19,27 +19,27 @@ https://kzlabs.com/56.php?p=
 
 ---
 ## Steps to Reproduce
-1. Go to `https://kzlabs.com/56.php` and open the Community Hub search.
+1. Go to `https://kzlabs.com/56.php` 
 2. First search for a unique term like `tix5uni'">` and view the page source.
 3. In the source code around line 435 you can see the search term reflected raw inside the `data-query` attribute:
 ```
 data-query='unique'">'
 ```
 4. The source code comment confirms "The $p parameter is echoed directly into the data-query attribute WITHOUT htmlspecialchars" confirming the injection point.
-5. Since the attribute uses single quotes and no escaping is applied, craft the following payload to break out and inject an event handler:
+5. Since the attribute uses single quotes and no escaping is applied, craft the following payload to break out.
 ```
-tix5uni' onmouseover='alert(1)
+tix5uni'><script>alert(1)</script>
 ```
 6. Submit this as the search term or visit the following URL directly:
 ```
-https://kzlabs.com/56.php?p=tix5uni'+onmouseover%3D'alert(1)
+http://kzlabs.com/56.php?p='><script>alert(1)</script>
 ```
 7. The page loads and hovering over the search results area triggers the JavaScript alert box displaying `1` confirming the payload broke out of the attribute and executed.
 
 ---
 ## Payload Used
 ```
-tix5uni' onmouseover='alert(1)
+tix5uni'><script>alert(1)</script>
 ```
 
 ---
