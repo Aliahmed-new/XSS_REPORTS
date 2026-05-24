@@ -8,8 +8,7 @@ Reflected XSS
 
 ---
 ## Summary
-The search parameter on the PUBG Community Hub page reflects user input directly inside an HTML attribute called `data-query` without using `htmlspecialchars` or any encoding. The source code even has a comment saying "The $p parameter is echoed directly into the data-query attribute WITHOUT htmlspecialchars" which confirms the vulnerability at the code level. Since the value is injected into an attribute without proper quoting or escaping, an attacker can break out of the attribute and inject event handlers like `onmouseover` to execute JavaScript without needing any HTML tags at all.
-
+The PUBG Community Hub page contains a reflected XSS vulnerability in its search functionality. User-supplied input is embedded directly into a data-query HTML attribute without any encoding or sanitization — the source code itself includes a comment confirming that the $p parameter is inserted without htmlspecialchars. Because the value is placed into the attribute without proper quoting or escaping, an attacker can break out of the attribute context and inject event handlers such as onmouseover to execute arbitrary JavaScript, no HTML tags required.
 ---
 ## Vulnerable Endpoint
 ```
