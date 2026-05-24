@@ -19,7 +19,7 @@ I identified a stored XSS in the **Report Name** feild of the AdPulse applicatio
 ## Vulnerable Endpoint
 
 ```
-https://kzlabs.com/60.php/reports
+http://kzlabs.com/60.php/reports
 ```
 Injection point - **Report Name feild** when creating a New Network Report
 
@@ -29,7 +29,7 @@ Injection point - **Report Name feild** when creating a New Network Report
 
 1. Log in to the following application
 ```
-https://kzlabs.com/60.php
+http://kzlabs.com/60.php
 ```
 3. Navigate to the **Reports** tab.
 4. Click on **+ New Network Report**.
