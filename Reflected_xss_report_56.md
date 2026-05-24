@@ -20,7 +20,7 @@ https://kzlabs.com/56.php?p=
 ---
 ## Steps to Reproduce
 1. Go to `https://kzlabs.com/56.php` and open the Community Hub search.
-2. First search for a unique term like `unique'">` and view the page source.
+2. First search for a unique term like `tix5uni'">` and view the page source.
 3. In the source code around line 435 you can see the search term reflected raw inside the `data-query` attribute:
 ```
 data-query='unique'">'
@@ -28,24 +28,24 @@ data-query='unique'">'
 4. The source code comment confirms "The $p parameter is echoed directly into the data-query attribute WITHOUT htmlspecialchars" confirming the injection point.
 5. Since the attribute uses single quotes and no escaping is applied, craft the following payload to break out and inject an event handler:
 ```
-unique' onmouseover='alert(1)
+tix5uni' onmouseover='alert(1)
 ```
 6. Submit this as the search term or visit the following URL directly:
 ```
-https://kzlabs.com/56.php?p=unique'+onmouseover%3D'alert(1)
+https://kzlabs.com/56.php?p=tix5uni'+onmouseover%3D'alert(1)
 ```
 7. The page loads and hovering over the search results area triggers the JavaScript alert box displaying `1` confirming the payload broke out of the attribute and executed.
 
 ---
 ## Payload Used
 ```
-unique' onmouseover='alert(1)
+tix5uni' onmouseover='alert(1)
 ```
 
 ---
 ## Proof of Concept
 
-**Screenshot 1** — Page source showing the search term `unique` reflected raw inside the `data-query` attribute at line 435 with the source comment clearly stating "The $p parameter is echoed directly into the data-query attribute WITHOUT htmlspecialchars" and "Payload to exploit: '><img src=a onerror=alert(document.cookie)>" confirming the vulnerable injection point.
+**Screenshot 1** — Page source showing the search term `tix5uni` reflected raw inside the `data-query` attribute at line 435 with the source comment clearly stating "The $p parameter is echoed directly into the data-query attribute WITHOUT htmlspecialchars" and "Payload to exploit: '><img src=a onerror=alert(document.cookie)>" confirming the vulnerable injection point.
 
 <img width="1888" height="915" alt="Screenshot 2026-05-24 030325" src="https://github.com/user-attachments/assets/8ae42855-ca54-49cc-a9f1-e7da259316ed" />
 
