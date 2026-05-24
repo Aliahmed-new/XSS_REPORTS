@@ -8,7 +8,7 @@ Reflected XSS
 
 ---
 ## Summary
-The search parameter on the Help Center page reflects user input directly inside a JavaScript analytics tracking script without any escaping or sanitization. When you search for something, the search term gets embedded raw into a JavaScript object as the value of `internalSearchTerm`. This means if you break out of the string context with a quote and inject JavaScript, it executes immediately. No storage involved, the payload fires the moment the page loads with the crafted URL.
+The Help center page has an XSS vulnerability in its search bar. whatever you type into the search bar gets embedded raw into a JavaScript object with no sanitiziation. This means by  breaking out of the string context with a quote and injecting JavaScript, the payload runs immediately when the page loads. just a malicious URL and the popup fires.
 
 ---
 ## Vulnerable Endpoint
