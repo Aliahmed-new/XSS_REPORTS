@@ -20,39 +20,41 @@ https://kzlabs.com/55.php?search=
 ---
 ## Steps to Reproduce
 1. Go to `https://kzlabs.com/55.php` and open the Help Center search.
-2. First search for a unique term like `unique1` and view the page source.
+2. First search for a unique term like `tix5uni` and view the page source.
 3. In the source code around line 425 you can see the search term reflected raw inside the JavaScript analytics block:
 ```
-internalSearchTerm: "unique1",
+internalSearchTerm: "tix5uni",
 ```
 4. This confirms the search term is injected directly into a JS string with no escaping at all.
 5. Now craft the payload to break out of the string context and inject JavaScript:
 ```
-unique"-alert(1)-"
+tix5uni"-alert(1)-"
 ```
 6. Submit this as the search term or visit the following URL directly:
 ```
-https://kzlabs.com/55.php?search=unique"-alert(1)-"
+https://kzlabs.com/55.php?search=tix5uni"-alert(1)-"
 ```
 7. The page loads and a JavaScript alert box pops up displaying `1` confirming the payload broke out of the JS string and executed.
 
 ---
 ## Payload Used
 ```
-unique"-alert(1)-"
+tix5uni"-alert(1)-"
 ```
 
 ---
 ## Proof of Concept
 
-**Screenshot 1** — Page source showing the search term `unique` reflected raw inside the JavaScript analytics block at line 425 as the value of `internalSearchTerm`, with a comment in the source itself saying "The search term is reflected here WITHOUT JavaScript string escaping" confirming the vulnerability at the code level.
+**Screenshot 1** — Page source showing the search term `tix5uni` reflected raw inside the JavaScript analytics block at line 425 as the value of `internalSearchTerm`, with a comment in the source itself saying "The search term is reflected here WITHOUT JavaScript string escaping" confirming the vulnerability at the code level.
 
-<img width="1909" height="891" alt="Screenshot 2026-05-24 025957" src="https://github.com/user-attachments/assets/5ce81427-7fad-4110-b2f0-4c9c6e248c1b" />
+<img width="749" height="259" alt="lab_55" src="https://github.com/user-attachments/assets/599a2be1-f442-429f-9a5b-d6a84d408adb" />
 
 
-**Screenshot 2** — Alert box displaying `1` triggered on the Search Results page after submitting the payload `unique"-alert(1)-"`, with the payload visible in both the URL bar and the search input field confirming reflected XSS execution in the JavaScript context.
 
-<img width="1890" height="943" alt="Screenshot 2026-05-24 025925" src="https://github.com/user-attachments/assets/730bab4d-a371-4325-98d7-89a8ec5e3789" />
+**Screenshot 2** — Alert box displaying `1` triggered on the Search Results page after submitting the payload `tix5uni"-alert(1)-"`, with the payload visible in both the URL bar and the search input field confirming reflected XSS execution in the JavaScript context.
+
+<img width="1286" height="445" alt="lab55" src="https://github.com/user-attachments/assets/038d8598-79eb-47b7-83b9-e509210dc480" />
+
 
 
 ---
