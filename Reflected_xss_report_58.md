@@ -19,10 +19,12 @@ https://kzlabs.com/58.php/account/{username}/messages
 ---
 ## Steps to Reproduce
 1. Open the following URL in a browser
+```
  https://kzlabs.com/58.php/account/tix5uni"><img src=x onerror=alert(1)>/messages
-2. wait for the page to load
-3. A JavaScript alert box triggers immediately 
-4. The page loads and the alert box fires immediately displaying `1` confirming the payload broke out of the href attribute and executed via the onerror handler.
+```
+3. wait for the page to load
+4. A JavaScript alert box triggers immediately 
+5. The page loads and the alert box fires immediately displaying `1` confirming the payload broke out of the href attribute and executed via the onerror handler.
 
 ---
 ## Payload Used
