@@ -59,7 +59,7 @@ tix5uni'"><img src=x onerror=alert(1)>
 <img width="1005" height="801" alt="lab-60" src="https://github.com/user-attachments/assets/5131a18e-7dce-4516-8d73-7c4a4a2177cd" />
 
 
-**Screenshot 1** — Used an img tag payload `'"><img src=x onerror=a>lert(1)` the alert triggered on page load, which confirms any HTML payload gets executed.
+**Screenshot 2** — Used an img tag payload `'"><img src=x onerror=a>lert(1)` the alert triggered on page load, which confirms any HTML payload gets executed.
 
 <img width="1302" height="421" alt="lab60_" src="https://github.com/user-attachments/assets/d19ab239-7f97-4331-b760-3719df82497d" />
 
