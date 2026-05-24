@@ -41,21 +41,19 @@ https://kzlabs.com/64.php
 
 **Screenshot 1** — Support Ticket form showing the blind XSS payload entered in the Name, Subject and Your Message fields before submission.
 
-<img width="1873" height="939" alt="Screenshot 2026-05-24 021224" src="https://github.com/user-attachments/assets/801abfb6-9611-4ab3-9706-0e9ad8498ee0" />
+<img width="945" height="811" alt="lab__64" src="https://github.com/user-attachments/assets/1b5b19bc-f659-4629-9451-47846836e756" />
+
 
 **Screenshot 2** — Alert box fired in the admin's browser on the Support Admin Panel page showing "Blind XSS Fired!" along with the captured domain `kzlabs.com`, the admin session cookie `PHPSESSID=evct7b599qbc5vcj27s5cbtq7e`, and the admin panel URL `https://kzlabs.com/64.php?view=admin`, confirming full blind XSS execution in the admin browser context.
 
-<img width="1909" height="937" alt="Screenshot 2026-05-24 022222" src="https://github.com/user-attachments/assets/c1d4a892-a632-422d-9e59-39918f748d2b" />
+<img width="1571" height="949" alt="lab-64" src="https://github.com/user-attachments/assets/2862ac57-e835-4aaf-bd86-93e75b777307" />
 
 
-**Screenshot 3** — Support Admin Panel showing the XSS Sink Active badge and the warning "Ticket name and subject are rendered via innerHTML — payloads fire here", with the attacker's ticket visible in the All Support Tickets list as `'">` confirming the payload was stored as-is.
-
-<img width="1899" height="936" alt="Screenshot 2026-05-24 021452" src="https://github.com/user-attachments/assets/860c148d-272c-4c1c-9b7a-2eeb443facd7" />
 
 
-**Screenshot 4** — XSS reporting tool at xss.report showing the screenshot preview captured from the admin's browser session, with the Name, Subject and Message fields all flagged as INNERHTML sinks and the admin session cookie `e795e8526ef16163dd00e9af` visible in the top right corner confirming the full data capture.
+**Screenshot 3** — XSS reporting tool at xss.report showing the screenshot preview captured from the admin's browser session, with the Name, Subject and Message fields all flagged as INNERHTML sinks and the admin session cookie `e795e8526ef16163dd00e9af` visible in the top right corner confirming the full data capture.
 
-<img width="1908" height="937" alt="Screenshot 2026-05-24 014214" src="https://github.com/user-attachments/assets/a59e5677-893f-4258-8b87-45af9667a573" />
+<img width="1553" height="964" alt="lab 64_" src="https://github.com/user-attachments/assets/81717fcf-37b7-46c6-872c-a8adcc5ad9e1" />
 
 
 ---
