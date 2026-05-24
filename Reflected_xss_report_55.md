@@ -36,9 +36,10 @@ tix5uni"-alert(1)-"
 
 ## Proof of Concept
 
-**Screenshot 1** — Page source showing the search term `tix5uni` reflected raw inside the JavaScript analytics block at line 425 as the value of `internalSearchTerm`, with a comment in the source itself saying "The search term is reflected here WITHOUT JavaScript string escaping" confirming the vulnerability at the code level.
+**Screenshot 1** — Page source showing the search term `tix5uni` reflected raw inside the JavaScript analytics block 
 
-<img width="749" height="259" alt="lab_55" src="https://github.com/user-attachments/assets/599a2be1-f442-429f-9a5b-d6a84d408adb" />
+<img width="1413" height="872" alt="1235" src="https://github.com/user-attachments/assets/9a74b100-3bae-43bb-9517-9f9dd2d047c5" />
+
 
 
 
