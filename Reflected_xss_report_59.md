@@ -23,12 +23,8 @@ https://kzlabs.com/59.php/svc/shreddit/api/comments/askreddit/{POST_ID}/t1_COMME
 ```
 https://kzlabs.com/59.php/svc/shreddit/api/comments/askreddit/hello123%20onmouseover=alert(1)/t1_i5u8kpl
 ```
-3.wait for the page to load
-
-4. Since there are no quotes to break out of, a single space is all that is needed to inject a new attribute. 
-```
-```
-5. The page loads and hovering over the See More Comments button triggers the alert box displaying `1` confirming the payload injected a new attribute and executed.
+2.wait for the page to load
+3. The page loads and hovering over the See More Comments button triggers the alert box displaying `1` confirming the payload injected a new attribute and executed.
 
 ---
 ## Payload Used
