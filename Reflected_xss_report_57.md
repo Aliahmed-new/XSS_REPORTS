@@ -33,7 +33,6 @@ http://kzlabs.com/57.php?returnTo=tix5uni'"><script>alert(1)</script>
 ## Payload Used
 ```
 tix5uni'"><script>alert(1)</script>
-```
 
 ## Proof of Concept
 
