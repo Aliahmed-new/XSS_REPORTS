@@ -36,7 +36,7 @@ hello123 onmouseover=alert(1)
 ---
 ## Proof of Concept
 
-**Screenshot 1** — Page source showing the POST_ID value `tix5uni` reflected raw inside the unquoted `id` attribute of the See More Comments button at line 711, with the source comment clearly stating "$post_id is echoed raw into an UNQUOTED id attribute. A space in the post_id injects a new HTML attribute directly" confirming the exact injection point.
+**Screenshot 1** — Page source showing the POST_ID value `hello123` reflected raw inside the unquoted `id` attribute of the See More Comments button at line 711, with the source comment clearly stating "$post_id is echoed raw into an UNQUOTED id attribute. A space in the post_id injects a new HTML attribute directly" confirming the exact injection point.
 
 <img width="1901" height="915" alt="Screenshot 2026-05-24 033953" src="https://github.com/user-attachments/assets/1f471823-713f-48a3-8e43-4675bb861263" />
 
