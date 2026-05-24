@@ -59,17 +59,16 @@ tix5uni"-alert(1)-"
 
 ---
 ## Impact
-- An attacker can craft a malicious URL and send it to any Equifax user and the moment they click it the script executes in their browser
-- Steal session cookies of anyone who clicks the link giving the attacker full access to their account
-- Since this is on the Equifax Help Center it targets real users who trust the domain making phishing via this vector extremely effective
+- Cookie stealing
+- Account takeover by sending crafted link to victim
+- JavaScript execution in victim browser
 - Can be used to redirect victims to fake login pages that look identical to Equifax to harvest credentials
 - The vulnerability exists inside an analytics script which shows the dev team never considered it as an injection point making it easy to miss during code review
 
 ---
 ## Remediation
-1. Escape the search term before embedding it inside a JavaScript string by replacing `"` with `\"` so it cannot break out of the string context.
-2. Filter out HTML tags like `<script>`, `<img>`, `<svg>` from the search field before reflecting anything back to the page
-3. Filter out JavaScript methods like `alert()`, `confirm()`, `prompt()` so even if a quote slips through the method won't execute
-4. If you're using PHP then use `json_encode()` when injecting any user supplied value into a JavaScript context as it handles all necessary escaping automatically, and use `htmlspecialchars()` for any user input reflected in HTML context
-5. Implement a strict Content Security Policy (CSP) header that blocks loading of external scripts as this would have directly prevented any external payload from loading even if the input slips through
-6. Use Cloudflare as they have so many WAF rules that almost all XSS payloads will be blocked automatically before even reaching the server
+1. Filter out dangerous tags like <script> <img> <svg> before they reach the page
+2.Filter out dangerous methods like alert confirm prompt from any user supplied input
+3.Filter out dangerous URI schemes like javascript: data: from any value going into an href attribute
+4.If you are using PHP use htmlspecialchars() function to encode special characters before they touch the HTML
+5.Use Cloudflare — they have so many built in rules that almost all XSS payloads get blocked automatically without you having to do anything extra.
