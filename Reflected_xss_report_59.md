@@ -55,7 +55,7 @@ hello123 onmouseover=alert(1)
 
 ---
 ## Remediation
-1. Wrap the `id` attribute value in double quotes so the POST_ID cannot inject new attributes using a space character
+1. Wrap the `path` attribute value in double quotes so the POST_ID cannot inject new attributes using a space character
 2. Filter out spaces and event handler keywords like `onmouseover`, `onerror`, `onclick` from the POST_ID segment before reflecting it back to the page
 3. Filter out JavaScript methods like `alert()`, `confirm()`, `prompt()` so even if an attribute gets injected the method won't execute
 4. If you're using PHP then use `htmlspecialchars()` function with `ENT_QUOTES` flag before echoing any user supplied value into an HTML attribute
