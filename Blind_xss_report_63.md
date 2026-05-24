@@ -52,7 +52,7 @@ https://kzlabs.com/63.php?view=register
 
 **Screenshot 3** — Admin dashboard showing the Recent Registrations table with the attacker's account (smith) and the stored payload visible in the Company column as `'">`, confirming the admin's browser loaded and executed the external script when the dashboard was opened.
 
-<img width="1914" height="947" alt="Screenshot 2026-05-24 014029" src="https://github.com/user-attachments/assets/a5ae84a7-0918-4431-acfa-ba775dfee014" />
+<img width="1311" height="747" alt="Capture 6363" src="https://github.com/user-attachments/assets/12b8fa63-b37b-4b8f-9a29-b99188f95c40" />
 
 
 **Screenshot 4** — XSS reporting tool at xss.report showing the screenshot preview captured from the admin's browser session when the payload fired, confirming blind XSS execution on the admin side with the session cookie `5898fb3750074f1ce30274df` visible in the top right corner.
