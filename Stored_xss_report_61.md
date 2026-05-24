@@ -8,15 +8,13 @@ Stored XSS
 
 ---
 ## Summary
-The Body field in the Write section has a rich text editor with two tabs, Write and HTML. The HTML tab accepts raw HTML directly and does not sanitize it before saving to the database. Whatever you put in there gets stored and then rendered as actual HTML when the article loads, which means the payload fires for anyone who visits that page.
+The **write section** has a stored XSS. The body feild has an HTML tab where you can type raw HTML directly - and it saves to the database without any sanitization. when someone visits the article, that HTML renders on the page and the payload fires automatically.
 
 ---
 ## Vulnerable Endpoint
 ```
-https://kzlabs.com/61.php
+https://kzlabs.com/61.php/articles/new
 ```
-**Vulnerable Parameter:** Body field (HTML tab inside the Write article form)
-
 ---
 ## Steps to Reproduce
 1. Log in to the application at `https://kzlabs.com/61.php` with a valid account.
@@ -26,8 +24,8 @@ https://kzlabs.com/61.php
 ```
 "><img src=x onerror=alert(1)>
 ```
-5. Submit the article.
-6. You are redirected to the My Articles page and the article shows as Published.
+5. Save and publish the article.
+6. Navigate to the My Articles page 
 7. Observe that a JavaScript alert box pops up immediately displaying `3` — confirming the payload was stored and executed.
 8. Anyone who opens that article will trigger the same alert.
 
@@ -52,15 +50,13 @@ https://kzlabs.com/61.php
 
 ---
 ## Impact
-- Steal session cookies of every user who reads the article
+- steal cookies and paste in their browser 
 - Take over accounts without needing passwords
-- Since articles are publicly visible the attack surface goes beyond just authenticated users
-- Can inject fake login forms to harvest credentials
 - One published article is enough to silently hit every single visitor
 
 ---
 ## Remediation
-1. Filter out HTML tags like `<script>`, `<img>`, `<svg>` from the Body field before saving anything to the database
+1. Filter out dangerous HTML tags like `<script>`, `<img>`, `<svg>` from the Body field before saving anything to the database
 2. Filter out JavaScript methods like `alert()`, `confirm()`, `prompt()` so even if a tag slips through the method won't execute
 3. If you're using PHP then use `htmlspecialchars()` function before rendering any user input back to the page
 4. Use Cloudflare as they have so many WAF rules that almost all XSS payloads will be blocked automatically before even reaching the server
