@@ -20,7 +20,8 @@ https://kzlabs.com/58.php/account/{username}/messages
 ## Steps to Reproduce
 1. Open the following URL in a browser
 ```
- https://kzlabs.com/58.php/account/tix5uni"><img src=x onerror=alert(1)>/messages
+http://kzlabs.com/58.php/account/tix5uni"><img src=x onerror=alert(1)>/messages
+
 ```
 2. wait for the page to load
 3. A JavaScript alert box triggers immediately 
