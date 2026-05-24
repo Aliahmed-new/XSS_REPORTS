@@ -57,8 +57,7 @@ tix5uni"-alert(1)-"
 
 ---
 ## Remediation
-1. Filter out dangerous tags like <script> <img> <svg> before they reach the page
-2. Filter out dangerous methods like alert confirm prompt from any user supplied input
-3. Filter out dangerous URI schemes like javascript: data: from any value going into an href attribute
-4. If you are using PHP use htmlspecialchars() function to encode special characters before they touch the HTML
-5. Use Cloudflare — they have so many built in rules that almost all XSS payloads get blocked automatically without you having to do anything extra.
+1.  Filter out dangerous tags like `script`, `img`, `svg` from user input before reflecting anything back to the page
+3. Filter out JavaScript methods like `alert()`, `confirm()`, `prompt()` so even if a quote slips through the method won't execute
+4. If you're using PHP then use `htmlspecialchars()` function with `ENT_QUOTES` flag before rendering any user input inside HTML attributes as this encodes both single and double quotes
+5. Use Cloudflare as they have so many WAF rules that almost all XSS payloads will be blocked automatically before even reaching the server
