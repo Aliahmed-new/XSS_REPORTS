@@ -41,7 +41,8 @@ https://kzlabs.com/63.php?view=register
 
 **Screenshot 1** — Registration form showing the blind XSS payload entered in the Company Name field, with the app itself warning "This field accepts any input including HTML content" confirming the field accepts raw HTML with no filtering at all.
 
-<img width="1895" height="939" alt="Screenshot 2026-05-24 013518" src="https://github.com/user-attachments/assets/5fd6b5c8-9420-4cf1-967f-bdb8d11cf6b2" />
+<img width="1212" height="836" alt="lab63" src="https://github.com/user-attachments/assets/e81fe406-8ca4-4128-9e73-bd38dbb7e1c3" />
+
 
 
 **Screenshot 2** — My Profile page showing the Company field rendering `'">` confirming the payload was stored as-is, the script tag portion loaded silently in the background.
