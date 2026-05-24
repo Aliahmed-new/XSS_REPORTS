@@ -24,6 +24,7 @@ https://kzlabs.com/56.php?p=
 http://kzlabs.com/55.php?search=tix5uni"-alert(1)-"
 ```
 2.Wait for the page to load
+
 3.The page loads and hovering over the search results area triggers the JavaScript alert box displaying `1` confirming the payload broke out of the attribute and executed.
 
 ---
