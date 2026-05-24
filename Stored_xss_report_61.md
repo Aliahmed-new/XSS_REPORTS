@@ -17,10 +17,14 @@ http://kzlabs.com/61.php/articles/new
 ```
 ---
 ## Steps to Reproduce
-1. Log in to the application at `http://kzlabs.com/61.php` with a valid account.
-2. Navigate to the **Write** tab.
-3. Fill in the **Title** and **Tags** fields with any value.
-4. In the **Body** field, click on the **HTML** tab and enter the following payload:
+1. create Quill account
+2. Log in to the account using following URL
+ ```
+http://kzlabs.com/61.php
+```
+4. Navigate to the **Write** tab.
+5. Fill in the **Title** and **Tags** fields with any value.
+6. In the **Body** field, click on the **HTML** tab and enter the following payload:
 ```
 "><img src=x onerror=alert(1)>
 ```
