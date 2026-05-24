@@ -38,7 +38,8 @@ tix5uni"><img src=x onerror=alert(1)>
 
 **Screenshot 1** — Page source showing the username `tix5uni` reflected raw inside the profile link `href` attribute at line 382, with the source comment clearly stating "VULNERABLE: $username is echoed raw into this double-quoted href" and the suggested payload `testcatplzignore"><img src=x onerror=prompt(document.domain)>` confirming the exact injection point.
 
-<img width="717" height="295" alt="lab_58" src="https://github.com/user-attachments/assets/27d7790f-c5a2-4a64-83dc-1372d5725d09" />
+<img width="1213" height="459" alt="image" src="https://github.com/user-attachments/assets/d245d117-3837-429b-bf21-a82fe37fcab6" />
+
 
 
 
