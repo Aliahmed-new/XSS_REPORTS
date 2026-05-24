@@ -19,10 +19,10 @@ https://kzlabs.com/55.php?search=
 
 ---
 ## Steps to Reproduce
-1. Go to `https://kzlabs.com/55.php` and open the Help Center search.
-2. First search for a unique term like `tix5uni` and view the page source.
-3. In the source code around line 425 you can see the search term reflected raw inside the JavaScript analytics block:
-```
+1. 1.Open this URL in your browser:
+http://kzlabs.com/55.php?search=tix5uni"-alert(1)-"
+2.Wait for the page to load
+3.An alert popup appears showing 1
 internalSearchTerm: "tix5uni",
 ```
 4. This confirms the search term is injected directly into a JS string with no escaping at all.
