@@ -13,7 +13,7 @@ The PUBG community contains a reflected XSS vulnerability in its search function
 
 ## Vulnerable Endpoint
 ```
-https://kzlabs.com/56.php?p=
+http://kzlabs.com/56.php?p=
 ```
 **Vulnerable Parameter:** `p` parameter reflected inside the `data-query` HTML attribute without encoding
 
@@ -21,7 +21,7 @@ https://kzlabs.com/56.php?p=
 ## Steps to Reproduce
 1. Open the following URL in your browser
 ```
-http://kzlabs.com/55.php?search=tix5uni"-alert(1)-"
+http://kzlabs.com/56.php?p='><script>alert(1)</script>
 ```
 2.Wait for the page to load
 
