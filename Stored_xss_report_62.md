@@ -51,7 +51,7 @@ https://kzlabs.com/62.php
 ---
 ## Remediation
 1. Filter out dangerous HTML tags like `<script>`, `<img>`, `<svg>` from the Body field before saving anything to the database
-2. Filter out dangerous Event Handler `onerror`, `onload`, `onfocus`
+2. Filter out dangerous Event Handler `onerror`, `onload`, `onfocus` from any user supplied input
 3. Filter out JavaScript methods like `alert()`, `confirm()`, `prompt()` so even if a tag slips through the method won't execute
 4. If you're using PHP then use `htmlspecialchars()` function before rendering any user input back to the page
 5. Use Cloudflare as they have so many WAF rules that almost all XSS payloads will be blocked automatically before even reaching the server
