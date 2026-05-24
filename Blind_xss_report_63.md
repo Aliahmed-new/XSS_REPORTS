@@ -57,7 +57,8 @@ https://kzlabs.com/63.php?view=register
 
 **Screenshot 4** — XSS reporting tool at xss.report showing the screenshot preview captured from the admin's browser session when the payload fired, confirming blind XSS execution on the admin side with the session cookie `5898fb3750074f1ce30274df` visible in the top right corner.
 
-<img width="1908" height="937" alt="Screenshot 2026-05-24 014214" src="https://github.com/user-attachments/assets/7af3f047-2f1d-4d56-9683-890eb6dae419" />
+<img width="1222" height="759" alt="Capture636363" src="https://github.com/user-attachments/assets/5e15f718-d202-4060-97d0-d2bd11d75931" />
+
 
 
 ---
