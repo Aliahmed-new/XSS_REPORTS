@@ -28,11 +28,11 @@ http://kzlabs.com/57.php?returnTo=tix5uni'"><script>alert(1)</script>
 3.JavaScript alert box triggers immediately
 
 4.This confirms that arbitrary JavaScript supplied via the returnTo parameter is executed in the browser when the link is clicked
-```
 
 ## Payload Used
 ```
 tix5uni'"><script>alert(1)</script>
+```
 
 ## Proof of Concept
 
