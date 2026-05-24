@@ -8,8 +8,8 @@ Reflected XSS
 
 ---
 ## Summary
+I identified a reflected XSS in the URL path segment of the following endpoint. The path segment between account/USERNAME/messages is reflected directly into a href tag without sanitization, allowing JavaScript execution through an event handler injection.
 
----
 ## Vulnerable Endpoint
 ```
 https://kzlabs.com/58.php/account/{username}/messages
@@ -18,12 +18,10 @@ https://kzlabs.com/58.php/account/{username}/messages
 
 ---
 ## Steps to Reproduce
-1. Open the following URL in a browser  https://kzlabs.com/58.php/account/tix5uni"><img src=x onerror=alert(1)>/messages
+1. Open the following URL in a browser
+ https://kzlabs.com/58.php/account/tix5uni"><img src=x onerror=alert(1)>/messages
 2. wait for the page to load
-```
 3. A JavaScript alert box triggers immediately 
-```
-```
 4. The page loads and the alert box fires immediately displaying `1` confirming the payload broke out of the href attribute and executed via the onerror handler.
 
 ---
