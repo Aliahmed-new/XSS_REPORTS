@@ -12,17 +12,16 @@ Stored XSS
 
 ## Summary
 
-The "Report Name" input field in the Network Reports section does not sanitize or encode user-supplied input before storing it in the database and later rendering it back to users. This means any JavaScript payload entered as a report name gets saved and then executed in the browser of every authenticated user who visits the Reports page — not just the attacker.
+I identified a stored XSS in the **Report Name** feild of the AdPulse application. Whatever is typed into the Report Name gets saved directly into the database without any sanitization and executes automatically for every aunthenticated user who visits the report page with zero interaction needed.
 
 ---
 
 ## Vulnerable Endpoint
 
 ```
-https://kzlabs.com/60.php
+https://kzlabs.com/60.php/reports
 ```
-
-**Vulnerable Parameter:** Report Name field (input field inside the "New Network Report" form)
+Injection point - **Report Name feild** when creating a New Network Report
 
 ---
 
@@ -37,8 +36,8 @@ https://kzlabs.com/60.php
 tix5uni'"><img src=x onerror=alert(1)>
 ```
 
-5. Fill in the remaining required fields and click submit
-6. Once the report is saved, you are redirected back to the Network Reports listing page.
+5. Save the report
+6. Navigate back to the reports list page
 7. Observe that a JavaScript alert box fires — confirming that the script executed.
 8. Every authenticated user who loads this page will trigger the same alert.
 
