@@ -39,7 +39,8 @@ hello123 onmouseover=alert(1)
 
 **Screenshot 1** — Page source showing the POST_ID value `hello123` reflected raw inside the unquoted `id` attribute of the See More Comments button at line 711, with the source comment clearly stating "$post_id is echoed raw into an UNQUOTED id attribute. A space in the post_id injects a new HTML attribute directly" confirming the exact injection point.
 
-<img width="1901" height="915" alt="Screenshot 2026-05-24 033953" src="https://github.com/user-attachments/assets/1f471823-713f-48a3-8e43-4675bb861263" />
+<img width="1346" height="650" alt="image" src="https://github.com/user-attachments/assets/dbbf765e-26ef-4f21-826c-72f331c4afb5" />
+
 
 
 **Screenshot 2** — Alert box displaying `1` triggered on the Reddit-style comments page after hovering over the See More Comments button, with the crafted URL visible in the URL bar confirming reflected XSS execution via unquoted attribute injection in the URL path segment.
