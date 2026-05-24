@@ -1,23 +1,23 @@
----
+
 ## Title
 Reflected Cross-Site Scripting (XSS) via Search Parameter in JavaScript Analytics Context
 
----
+
 ## Vulnerability Type
 Reflected XSS
 
----
+
 ## Summary
 The Help center page has an XSS vulnerability in its search bar. whatever you type into the search bar gets embedded raw into a JavaScript object with no sanitiziation. This means by  breaking out of the string context with a quote and injecting JavaScript, the payload runs immediately when the page loads. just a malicious URL and the popup fires.
 
----
+
 ## Vulnerable Endpoint
 ```
 https://kzlabs.com/55.php?search=
 ```
 **Vulnerable Parameter:** `search` parameter reflected inside the JavaScript analytics block without string escaping
 
----
+
 ## Steps to Reproduce
 1.Open this URL in your browser:
 ```
@@ -27,13 +27,13 @@ http://kzlabs.com/55.php?search=tix5uni"-alert(1)-"
 3. An alert popup appears showing 1
 
 
----
+
 ## Payload Used
 ```
 tix5uni"-alert(1)-"
 ```
 
----
+
 ## Proof of Concept
 
 **Screenshot 1** — Page source showing the search term `tix5uni` reflected raw inside the JavaScript analytics block at line 425 as the value of `internalSearchTerm`, with a comment in the source itself saying "The search term is reflected here WITHOUT JavaScript string escaping" confirming the vulnerability at the code level.
@@ -48,7 +48,7 @@ tix5uni"-alert(1)-"
 
 
 
----
+
 ## Impact
 - Cookie stealing
 - Account takeover by sending crafted link to victim
@@ -56,7 +56,7 @@ tix5uni"-alert(1)-"
 - Can be used to redirect victims to fake login pages that look identical to Equifax to harvest credentials
 - The vulnerability exists inside an analytics script which shows the dev team never considered it as an injection point making it easy to miss during code review
 
----
+
 ## Remediation
 1.  Filter out dangerous tags like `script`, `img`, `svg` from user input before reflecting anything back to the page
 3. Filter out JavaScript methods like `alert()`, `confirm()`, `prompt()` so even if a quote slips through the method won't execute
