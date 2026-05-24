@@ -41,13 +41,13 @@ https://kzlabs.com/63.php?view=register
 
 **Screenshot 1** — Registration form showing the blind XSS payload entered in the Company Name field, with the app itself warning "This field accepts any input including HTML content" confirming the field accepts raw HTML with no filtering at all.
 
-<img width="740" height="719" alt="lab63" src="https://github.com/user-attachments/assets/532ac978-8f1a-4b6c-a9f6-1725bdc9769d" />
+<img width="755" height="932" alt="Capture63" src="https://github.com/user-attachments/assets/b8e1ce2d-a0f9-41c0-801e-a364979a722f" />
 
 
 
 **Screenshot 2** — My Profile page showing the Company field rendering `'">` confirming the payload was stored as-is, the script tag portion loaded silently in the background.
 
-<img width="1884" height="866" alt="Screenshot 2026-05-24 013603" src="https://github.com/user-attachments/assets/7730f1a7-0855-4b69-b99c-922de1311927" />
+<img width="740" height="719" alt="lab63" src="https://github.com/user-attachments/assets/532ac978-8f1a-4b6c-a9f6-1725bdc9769d" />
 
 
 **Screenshot 3** — Admin dashboard showing the Recent Registrations table with the attacker's account (smith) and the stored payload visible in the Company column as `'">`, confirming the admin's browser loaded and executed the external script when the dashboard was opened.
