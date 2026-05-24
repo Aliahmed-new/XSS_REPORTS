@@ -1,21 +1,21 @@
----
+
 ## Title
 Stored Cross-Site Scripting (XSS) in Profile Signature Field Executes for Every User Who Views the Profile
 
----
+
 ## Vulnerability Type
 Stored XSS
 
----
+
 ## Summary
 I identified a stored Cross-Site Scripting (XSS) vulnerability in **MY profile tab** in the **Signature field** . This field accepts and stores raw HTML without any sanitization and renders it directly as HTML via a live preview. The payload executes automatically for every user who visits the profile.
 
----
+
 ## Vulnerable Endpoint
 ```
 http://kzlabs.com/62.php
 ```
----
+
 ## Steps to Reproduce
 1. Create Acronis Forum account
 2. Log in to the account using following URL
@@ -38,7 +38,7 @@ http://kzlabs.com/62.php
 "><img src=x onerror=alert(1)>
 ```
 
----
+
 ## Proof of Concept
 
 **Screenshot 1** — The **MY Profile** form showing the payload entered inside the signature field and Alert box displaying `1` triggered automatically after hitting Save Profile which confirms the stored execution.
@@ -47,12 +47,12 @@ http://kzlabs.com/62.php
 
 
 
----
+
 ## Impact
 - steal cookies and paste in their browser 
 - Take over account without needing passwords
 
----
+
 ## Remediation
 1. Filter out dangerous HTML tags like `<script>`, `<img>`, `<svg>` from the Body field before saving anything to the database
 2. Filter out dangerous Event Handler `onerror`, `onload`, `onfocus` from any user supplied input
