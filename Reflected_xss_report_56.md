@@ -1,23 +1,23 @@
----
+
 ## Title
 Reflected Cross-Site Scripting (XSS) via Search Parameter in HTML Attribute Context
 
----
+
 ## Vulnerability Type
 Reflected XSS
 
----
+
 ## Summary
 The PUBG community contains a reflected XSS vulnerability in its search functionality. User supplied input is embedded directly into a data-query HTML attribute without any encoding - a source code itslef includes a comment that the p parameter inserted without htmlspecialchars.
 
----
+
 ## Vulnerable Endpoint
 ```
 https://kzlabs.com/56.php?p=
 ```
 **Vulnerable Parameter:** `p` parameter reflected inside the `data-query` HTML attribute without encoding
 
----
+
 ## Steps to Reproduce
 1. Open the following URL in your browser
 ```
@@ -27,13 +27,13 @@ http://kzlabs.com/55.php?search=tix5uni"-alert(1)-"
 
 3.The page loads and hovering over the search results area triggers the JavaScript alert box displaying `1` confirming the payload broke out of the attribute and executed.
 
----
+
 ## Payload Used
 ```
 tix5uni'><script>alert(1)</script>
 ```
 
----
+
 ## Proof of Concept
 
 **Screenshot 1** — Page source showing the search term `tix5uni` reflected raw inside the `data-query` attribute at line 435 with the source comment clearly stating "The $p parameter is echoed directly into the data-query attribute WITHOUT htmlspecialchars" and "Payload to exploit: '><script>alert(1)</script> confirming the vulnerable injection point.
@@ -46,14 +46,14 @@ tix5uni'><script>alert(1)</script>
 <img width="1315" height="346" alt="lab-56," src="https://github.com/user-attachments/assets/529aa4b4-b913-4fe0-ace4-cd9150b783bb" />
 
 
----
+
 ## Impact
 - An attacker can craft a malicious URL and send it to any PUBG Community Hub user and the moment they interact with the page the script executes in their browser
 - Steal session cookies of anyone who visits the crafted link giving the attacker full access to their account
 - Can be used to redirect victims to fake login pages to harvest credentials
 - The vulnerability exists inside an HTML attribute which is a less obvious injection point and easy to miss during code review
 
----
+
 ## Remediation
 1. Escape the `p` parameter before reflecting it inside the `data-query` attribute by replacing `'` with `&#39;` and `"` with `&quot;` so it cannot break out of the attribute context
 2. Filter out dangerous tags like `script`, `img`, `svg` from user input before reflecting anything back to the page
