@@ -21,7 +21,7 @@ http://kzlabs.com/64.php
 ## Steps to Reproduce
 1. Navigate to the support Ticket form on the application
 ```
-https://kzlabs.com/64.php
+http://kzlabs.com/64.php
 ```
 3. In the **Name**, **Subject** and **Message** fields enter the following payload:
 ```
