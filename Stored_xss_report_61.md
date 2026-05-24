@@ -1,21 +1,21 @@
----
+
 ## Title
 Stored Cross-Site Scripting (XSS) via Rich Text Editor HTML Tab in Article Body
 
----
+
 ## Vulnerability Type
 Stored XSS
 
----
+
 ## Summary
 The **write section** has a stored XSS. The body feild has an HTML tab where you can type raw HTML directly - and it saves to the database without any sanitization. when someone visits the article, that HTML renders on the page and the payload fires automatically.
 
----
+
 ## Vulnerable Endpoint
 ```
 http://kzlabs.com/61.php/articles/new
 ```
----
+
 ## Steps to Reproduce
 1. create Quill account
 2. Log in to the account using following URL
@@ -39,7 +39,7 @@ http://kzlabs.com/61.php
 "><img src=x onerror=alert(1)>
 ```
 
----
+
 ## Proof of Concept
 
 **Screenshot 1** — The Write form showing the payload entered inside the HTML tab of the Body field, confirming the editor accepts raw HTML with no filtering at all.
@@ -54,13 +54,13 @@ http://kzlabs.com/61.php
 
 
 
----
+
 ## Impact
 - steal cookies and paste in their browser 
 - Take over accounts without needing passwords
 - One published article is enough to silently hit every single visitor
 
----
+
 ## Remediation
 1. Filter out dangerous HTML tags like `<script>`, `<img>`, `<svg>` from the Body field before saving anything to the database
 2. Filter out JavaScript methods like `alert()`, `confirm()`, `prompt()` so even if a tag slips through the method won't execute
