@@ -33,7 +33,7 @@ unique<img width="1881" height="900" alt="Screenshot 2026-05-24 031552" src="htt
 ```
 6. Visit the following URL directly:
 ```
-https://kzlabs.com/57.php?returnTo=tix5uni'"><script>alert(1)</script>">
+http://kzlabs.com/57.php?returnTo=tix5uni'"><script>alert(1)</script>
 ```
 7. This confirms that arbitrary JavaScript supplied via the returnTo parameter is executed in the browser when the link is clicked
 
