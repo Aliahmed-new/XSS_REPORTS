@@ -1,20 +1,20 @@
----
+
 
 ## Title
 Stored Cross-Site Scripting (XSS) via Report Name Field in Network Reports
 
----
+
 
 ## Vulnerability Type
 Stored XSS
 
----
+
 
 ## Summary
 
 I identified a stored XSS in the **Report Name** feild of the AdPulse application. Whatever is typed into the Report Name gets saved directly into the database without any sanitization and executes automatically for every aunthenticated user who visits the report page with zero interaction needed.
 
----
+
 
 ## Vulnerable Endpoint
 
@@ -23,7 +23,7 @@ http://kzlabs.com/60.php/reports
 ```
 Injection point - **Report Name feild** when creating a New Network Report
 
----
+
 
 ## Steps to Reproduce
 
@@ -53,7 +53,7 @@ tix5uni'"><img src=x onerror=alert(1)>
 tix5uni'"><img src=x onerror=alert(1)>
 ```
 
----
+
 
 ## Proof of Concept
 
@@ -67,7 +67,7 @@ tix5uni'"><img src=x onerror=alert(1)>
 <img width="1302" height="421" alt="lab60_" src="https://github.com/user-attachments/assets/d19ab239-7f97-4331-b760-3719df82497d" />
 
 
----
+
 
 ## Impact
 
@@ -78,7 +78,7 @@ tix5uni'"><img src=x onerror=alert(1)>
 - This silently sends the victim's session cookie to the attacker's server
 - Attacker pastes that cookie into their browser and is immediately logged in as the victim — no password needed
 
----
+
 
 ## Remediation
 
