@@ -13,13 +13,13 @@ I identified a blind XSS in the **company Name Feild** during user registration.
 ---
 ## Vulnerable Endpoint
 ```
-https://kzlabs.com/63.php?view=register
+http://kzlabs.com/63.php?view=register
 ```
 ---
 ## Steps to Reproduce
 1. Register a new account in the following URL
 ```
- https://kzlabs.com/63.php?view=register
+ http://kzlabs.com/63.php?view=register
 ```
 3. In the **Company Name** field enter the following blind XSS payload:
 ```
@@ -28,7 +28,7 @@ https://kzlabs.com/63.php?view=register
 3. Complete registration and log in.
 5. Navigate to **My Profile** and the Company field shows `'">` confirming the payload was stored as-is but the script tag portion loaded silently in the background.
 6. Wait for the admin to log in and open the admin dashboard.
-7. Once the admin visits the dashboard the payload fires on their end and the XSS reporting tool at `xss.report` captures the execution along with a screenshot of what the admin viwed.
+7. Once the admin visits the dashboard the payload fires on their end and the XSS reporting tool at `xss.report` captures the execution along with a screenshot of what the admin viewd.
 8. The XSS report dashboard captured a screenshot of the admin panel confirming execution
 
 ---
@@ -68,7 +68,7 @@ https://kzlabs.com/63.php?view=register
 - Admin session cookie is exposed - attacker can take over the admin account completly with no password needed.
 - Since the admin has full access to manage all registered users a compromised admin account means full control over the entire platform
 - The attacker also gets a screenshot of exactly what the admin sees leaking sensitive internal data like user emails, registration details and platform stats
-- The victim admin has no isea anything happened - the page look completely normal.
+- The victim admin has no idea anything happened - the page look completely normal.
 
 ---
 ## Remediation
