@@ -38,7 +38,8 @@ tix5uni'><script>alert(1)</script>
 
 **Screenshot 1** — Page source showing the search term `tix5uni` reflected raw inside the `data-query` attribute at line 435 with the source comment clearly stating "The $p parameter is echoed directly into the data-query attribute WITHOUT htmlspecialchars" and "Payload to exploit: '><script>alert(1)</script> confirming the vulnerable injection point.
 
-<img width="1108" height="346" alt="lab56" src="https://github.com/user-attachments/assets/dc009f83-43bc-417a-89bc-72f265ee88d0" />
+<img width="1455" height="481" alt="image" src="https://github.com/user-attachments/assets/9e9b85d0-e00a-46fc-8376-bdcc16da86dd" />
+
 
 
 **Screenshot 2** — Alert box displaying `1` triggered on the PUBG Community Hub search results page after submitting the payload, with the payload tix5uni'><script>alert(1)</script>  visible in the search filter field and the URL bar confirming reflected XSS execution in the HTML attribute context.
