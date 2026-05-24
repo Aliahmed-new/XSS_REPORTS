@@ -27,10 +27,13 @@ Injection point - **Report Name feild** when creating a New Network Report
 
 ## Steps to Reproduce
 
-1. Log in to the application at `https://kzlabs.com/60.php`
-2. Navigate to the **Reports** tab.
-3. Click on **+ New Network Report**.
-4. In the **Report Name** field, enter the following payload:
+1. Log in to the following application
+```
+https://kzlabs.com/60.php
+```
+3. Navigate to the **Reports** tab.
+4. Click on **+ New Network Report**.
+5. In the **Report Name** field, enter the following payload:
 
 ```
 tix5uni'"><img src=x onerror=alert(1)>
