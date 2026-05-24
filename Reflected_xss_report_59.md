@@ -26,7 +26,7 @@ http://kzlabs.com/59.php/svc/shreddit/api/comments/askreddit/hello123%20onmouseo
 ```
 2.wait for the page to load.
 
-3.The page loads and hovering over the See More Comments button triggers the alert box displaying `1` confirming the payload injected a new attribute and executed.
+3.The page loads and hovering over the **See More Comments button** triggers the alert box displaying `1` confirming the payload injected a new attribute and executed.
 
 ---
 ## Payload Used
