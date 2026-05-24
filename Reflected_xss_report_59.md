@@ -21,7 +21,8 @@ https://kzlabs.com/59.php/svc/shreddit/api/comments/askreddit/{POST_ID}/t1_COMME
 ## Steps to Reproduce
 1. open the following URL in a browser
 ```
-https://kzlabs.com/59.php/svc/shreddit/api/comments/askreddit/hello123%20onmouseover=alert(1)/t1_i5u8kpl
+http://kzlabs.com/59.php/svc/shreddit/api/comments/askreddit/hello123%20onmouseover=alert(1)/t1_i5u8kpl
+
 ```
 2.wait for the page to load.
 
