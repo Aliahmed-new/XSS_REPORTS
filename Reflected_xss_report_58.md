@@ -8,8 +8,7 @@ Reflected XSS
 
 ---
 ## Summary
-The username segment in the URL path of the Imgur-style messaging page is reflected raw into a double-quoted `href` attribute without any encoding or sanitization. The source code itself has a comment saying "VULNERABLE: $username is echoed raw into this double-quoted href" which confirms the issue at the code level. Since the username is placed directly inside an `href` attribute without escaping, an attacker can break out of the attribute by closing the quote and injecting an img tag with an onerror handler to execute JavaScript automatically the moment the page loads.
-
+I identified a relfelcted XSS in the URL path segment of the following endpoint. The path segment between account/username/messages, the username segment in the URL path is reflected raw into a double-quoted `href` attribute without sanitization. Since the username is placed directly inside an `href` attribute without escaping, an attacker can break out of the attribute by allowing JavaScript execution through an event handler injection.
 ---
 ## Vulnerable Endpoint
 ```
@@ -19,48 +18,41 @@ https://kzlabs.com/58.php/account/{username}/messages
 
 ---
 ## Steps to Reproduce
-1. Go to `https://kzlabs.com/58.php/account/unique/messages` and view the page source.
-2. Around line 382 you can see the username `unique` reflected raw inside the profile link href:
+1. Open the following URL in a browser  https://kzlabs.com/58.php/account/tix5uni"><img src=x onerror=alert(1)>/messages
+2. wait for the page to load
 ```
-href="/account/unique/profile">
+3. A JavaScript alert box triggers immediately 
 ```
-3. The source comment confirms "VULNERABLE: $username is echoed raw into this double-quoted href" and even suggests the payload to use.
-4. Since the value is injected into a double-quoted attribute with no encoding, craft the following payload to break out and inject an img tag:
 ```
-unique"><img src=x onerror=alert(1)>
-```
-5. Visit the following URL directly:
-```
-https://kzlabs.com/58.php/account/unique"><img src=x onerror=alert(1)>/messages
-```
-6. The page loads and the alert box fires immediately displaying `1` confirming the payload broke out of the href attribute and executed via the onerror handler.
+4. The page loads and the alert box fires immediately displaying `1` confirming the payload broke out of the href attribute and executed via the onerror handler.
 
 ---
 ## Payload Used
 ```
-unique"><img src=x onerror=alert(1)>
+tix5uni"><img src=x onerror=alert(1)>
 ```
 
 ---
 ## Proof of Concept
 
-**Screenshot 1** — Page source showing the username `unique` reflected raw inside the profile link `href` attribute at line 382, with the source comment clearly stating "VULNERABLE: $username is echoed raw into this double-quoted href" and the suggested payload `testcatplzignore"><img src=x onerror=prompt(document.domain)>` confirming the exact injection point.
+**Screenshot 1** — Page source showing the username `tix5uni` reflected raw inside the profile link `href` attribute at line 382, with the source comment clearly stating "VULNERABLE: $username is echoed raw into this double-quoted href" and the suggested payload `testcatplzignore"><img src=x onerror=prompt(document.domain)>` confirming the exact injection point.
 
-<img width="1893" height="960" alt="image" src="https://github.com/user-attachments/assets/21af3f81-ab14-4b16-a12d-d552f8196a60" />
+<img width="717" height="295" alt="lab_58" src="https://github.com/user-attachments/assets/27d7790f-c5a2-4a64-83dc-1372d5725d09" />
 
 
-**Screenshot 2** — Alert box displaying `1` triggered on the Imgur-style messages page immediately after loading the crafted URL, with the full payload `unique"><img src=x onerror=alert(1)>` visible in the URL bar and the raw payload rendering on the profile card confirming reflected XSS execution via the URL path segment.
 
-<img width="1885" height="919" alt="Screenshot 2026-05-24 032734" src="https://github.com/user-attachments/assets/cc6dbb90-60ed-4299-9b7a-ba8be71e3c22" />
+**Screenshot 2** — Alert box displaying `1` triggered on the Imgur-style messages page immediately after loading the crafted URL, with the full payload `tix5uni"><img src=x onerror=alert(1)>` visible in the URL bar and the raw payload rendering on the profile card confirming reflected XSS execution via the URL path segment.
+
+<img width="1330" height="363" alt="lab-58" src="https://github.com/user-attachments/assets/da93df11-6f14-4c11-8f88-cefe8e6dedd1" />
+
 
 
 ---
 ## Impact
-- An attacker can craft a malicious profile URL and send it to any Imgur user and the moment they open it the script executes automatically without any interaction needed beyond clicking the link
-- Steal session cookies of anyone who visits the crafted URL giving the attacker full access to their Imgur account
+- An user visiting a crafted URL has a malicious code executed in their browser without clicking anything.
+- Cookie Stealing
 - Since the payload fires via an img onerror handler the victim does not need to click or hover over anything making it a fully automatic execution
 - Can be used to silently redirect victims to fake login pages to harvest credentials
-- Since Imgur is a widely used platform and links are commonly shared in posts and messages the attack surface for distributing this URL is extremely large
 
 ---
 ## Remediation
@@ -68,5 +60,4 @@ unique"><img src=x onerror=alert(1)>
 2. Filter out HTML tags like `<script>`, `<img>`, `<svg>` from the URL path segment before reflecting anything back to the page
 3. Filter out JavaScript methods like `alert()`, `confirm()`, `prompt()` so even if a quote slips through the method won't execute
 4. If you're using PHP then use `htmlspecialchars()` function with `ENT_QUOTES` flag before echoing any user supplied value into an HTML attribute as this encodes both single and double quotes
-5. Implement a strict Content Security Policy (CSP) header that blocks inline script execution so even if a payload gets injected the browser refuses to run it
-6. Use Cloudflare as they have so many WAF rules that almost all XSS payloads will be blocked automatically before even reaching the server
+5. Use Cloudflare as they have so many WAF rules that almost all XSS payloads will be blocked automatically before even reaching the server
