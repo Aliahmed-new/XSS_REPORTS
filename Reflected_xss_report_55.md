@@ -19,22 +19,11 @@ https://kzlabs.com/55.php?search=
 
 ---
 ## Steps to Reproduce
-1. 1.Open this URL in your browser:
+1.Open this URL in your browser:
 http://kzlabs.com/55.php?search=tix5uni"-alert(1)-"
-2.Wait for the page to load
-3.An alert popup appears showing 1
+2. Wait for the page to load
+3. An alert popup appears showing 1
 internalSearchTerm: "tix5uni",
-```
-4. This confirms the search term is injected directly into a JS string with no escaping at all.
-5. Now craft the payload to break out of the string context and inject JavaScript:
-```
-tix5uni"-alert(1)-"
-```
-6. Submit this as the search term or visit the following URL directly:
-```
-https://kzlabs.com/55.php?search=tix5uni"-alert(1)-"
-```
-7. The page loads and a JavaScript alert box pops up displaying `1` confirming the payload broke out of the JS string and executed.
 
 ---
 ## Payload Used
