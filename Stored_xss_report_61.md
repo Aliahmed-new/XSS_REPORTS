@@ -40,12 +40,14 @@ https://kzlabs.com/61.php/articles/new
 
 **Screenshot 1** — The Write form showing the payload entered inside the HTML tab of the Body field, confirming the editor accepts raw HTML with no filtering at all.
 
-<img width="1915" height="941" alt="Screenshot 2026-05-24 010323" src="https://github.com/user-attachments/assets/0da9bc06-6aba-46bc-a6c3-d76fa1047151" />
+<img width="1210" height="905" alt="lab-61" src="https://github.com/user-attachments/assets/3b5e90a1-b17b-4290-a154-c95e4e2f1082" />
+
 
 
 **Screenshot 2** — Alert box displaying `3` triggered automatically after the article was published and the My Articles page loaded, with the app itself showing the toast message "Article published — XSS payload fires when your articles page loads" which confirms the stored execution.
 
-<img width="1889" height="943" alt="Screenshot 2026-05-24 010335" src="https://github.com/user-attachments/assets/b014a9aa-27ee-4f55-92ec-3331dab2333f" />
+<img width="1346" height="549" alt="lab_61" src="https://github.com/user-attachments/assets/528a5733-11c7-4521-99d6-a44ac548b784" />
+
 
 
 ---
