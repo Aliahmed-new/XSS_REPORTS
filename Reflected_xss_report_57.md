@@ -8,7 +8,7 @@ Reflected XSS
 
 ---
 ## Summary
-ThI identified a reflected XSS in the `returnTo` parameter of the following endpoint. The parameter value is reflected directly into an <a href> tag without sanitization, allowing JavaScript execution when the link is clicked. 
+I identified a reflected XSS in the `returnTo` parameter of the following endpoint. The parameter value is reflected directly into an <a href> tag without sanitization, allowing JavaScript execution when the link is clicked. 
 
 ---
 ## Vulnerable Endpoint
@@ -48,12 +48,12 @@ tix5uni'"><script>alert(1)</script>
 
 **Screenshot 1** — Page source showing the returnTo value `tix5uni` reflected raw inside the Continue button href at line 461, with the source comment clearly stating "$returnTo is echoed into the href WITHOUT any validation" and noting that `javascript:alert(document.cookie)` will execute JS when clicked, confirming the vulnerable injection point.
 
-<img width="1881" height="900" alt="Screenshot 2026-05-24 031552" src="https://github.com/user-attachments/assets/deb3bc8a-bcb3-4cac-991d-4c725cfb73b2" />
+<img width="1250" height="513" alt="lab 57" src="https://github.com/user-attachments/assets/9eef7425-3cd4-4688-a66d-8e5bb2ca3ed9" />
 
 
 **Screenshot 2** — Alert box displaying `1` triggered on the account confirmation page immediately after loading the crafted URL, with the full payload visible in the URL bar confirming reflected XSS execution via the returnTo parameter.
 
-<img width="1905" height="947" alt="Screenshot 2026-05-24 031503" src="https://github.com/user-attachments/assets/3e6d172b-cd53-4b66-aac7-ac7c34788799" />
+<img width="1085" height="301" alt="57" src="https://github.com/user-attachments/assets/9198a32c-6875-4a9b-adbe-1fe5d94d4208" />
 
 
 ---
