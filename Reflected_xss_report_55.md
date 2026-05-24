@@ -58,7 +58,7 @@ tix5uni"-alert(1)-"
 ---
 ## Remediation
 1. Filter out dangerous tags like <script> <img> <svg> before they reach the page
-2.Filter out dangerous methods like alert confirm prompt from any user supplied input
-3.Filter out dangerous URI schemes like javascript: data: from any value going into an href attribute
-4.If you are using PHP use htmlspecialchars() function to encode special characters before they touch the HTML
-5.Use Cloudflare — they have so many built in rules that almost all XSS payloads get blocked automatically without you having to do anything extra.
+2. Filter out dangerous methods like alert confirm prompt from any user supplied input
+3. Filter out dangerous URI schemes like javascript: data: from any value going into an href attribute
+4. If you are using PHP use htmlspecialchars() function to encode special characters before they touch the HTML
+5. Use Cloudflare — they have so many built in rules that almost all XSS payloads get blocked automatically without you having to do anything extra.
