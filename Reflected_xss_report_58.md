@@ -22,9 +22,9 @@ https://kzlabs.com/58.php/account/{username}/messages
 ```
  https://kzlabs.com/58.php/account/tix5uni"><img src=x onerror=alert(1)>/messages
 ```
-3. wait for the page to load
-4. A JavaScript alert box triggers immediately 
-5. The page loads and the alert box fires immediately displaying `1` confirming the payload broke out of the href attribute and executed via the onerror handler.
+2. wait for the page to load
+3. A JavaScript alert box triggers immediately 
+4. The page loads and the alert box fires immediately displaying `1` confirming the payload broke out of the href attribute and executed via the onerror handler.
 
 ---
 ## Payload Used
