@@ -8,30 +8,25 @@ Reflected XSS
 
 ---
 ## Summary
-The `POST_ID` segment in the URL path of this Reddit-style Shreddit API comments page is reflected raw into an unquoted `id` attribute on the "See More Comments" button at the bottom of the page. Unlike typical attribute injection where you need to break out of quotes, this one has no quotes at all around the attribute value. That means a simple space character is enough to inject a brand new HTML attribute directly, so adding `onmouseover=alert(document.domain)` after a space in the POST_ID turns the button into an XSS trigger the moment anyone hovers over it.
+The `POST_ID` segment in the URL path of this Reddit-style Shreddit API comments page is reflected raw into an unquoted `id` attribute on the "See More Comments" button at the bottom of the page.The input is reflected into an unquoted HTML attribute, allowing JavaScript execution by injecting a new event handler using a space character.
 
 ---
 ## Vulnerable Endpoint
 ```
-https://kzlabs.com/59.php/svc/shreddit/api/comments/askreddit/{POST_ID}/t1_COMMENT_ID
+https://kzlabs.com/59.php/svc/shreddit/api/comments/askreddit/{POST_ID}/t1_COMMENT_I
 ```
 **Vulnerable Parameter:** `POST_ID` path segment reflected raw into an unquoted `id` attribute on the See More Comments button
 
 ---
 ## Steps to Reproduce
-1. Go to `https://kzlabs.com/59.php/svc/shreddit/api/comments/askreddit/t3_u9po1l/t1_i5u8kpl` and view the page source.
-2. Replace the POST_ID segment with `hello123` and view source again, around line 711 you can see it reflected raw inside an unquoted id attribute:
+1. open the following URL in a browser
 ```
-<button id=hello123 class="see-more-btn">
+https://kzlabs.com/59.php/svc/shreddit/api/comments/askreddit/hello123%20onmouseover=alert(1)/t1_i5u8kpl
 ```
-3. The source comment at line 705 confirms "$post_id is echoed raw into an UNQUOTED id attribute. A space in the post_id injects a new HTML attribute directly."
+3.wait for the page to load
 4. Since there are no quotes to break out of, a single space is all that is needed to inject a new attribute. Craft the following payload:
 ```
 hello123 onmouseover=alert(1)
-```
-5. Visit the following URL directly:
-```
-https://kzlabs.com/59.php/svc/shreddit/api/comments/askreddit/hello123%20onmouseover=alert(1)/t1_i5u8kpl
 ```
 6. The page loads and hovering over the See More Comments button triggers the alert box displaying `1` confirming the payload injected a new attribute and executed.
 
