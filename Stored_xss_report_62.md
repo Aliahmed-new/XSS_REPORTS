@@ -37,15 +37,9 @@ https://kzlabs.com/62.php
 ---
 ## Proof of Concept
 
-**Screenshot 1** — The Write form showing the payload entered inside the signature field.
+**Screenshot 1** — The **MY Profile** form showing the payload entered inside the signature field and Alert box displaying `1` triggered automatically after hitting Save Profile which confirms the stored execution.
 
-<img width="1210" height="905" alt="lab-61" src="https://github.com/user-attachments/assets/3b5e90a1-b17b-4290-a154-c95e4e2f1082" />
-
-
-
-**Screenshot 2** — Alert box displaying `1` triggered automatically after the article was published and the My Articles page loaded, with the app itself showing the toast message "Article published — XSS payload fires when your articles page loads" which confirms the stored execution.
-
-<img width="1346" height="549" alt="lab_61" src="https://github.com/user-attachments/assets/528a5733-11c7-4521-99d6-a44ac548b784" />
+<img width="1275" height="950" alt="lab_62" src="https://github.com/user-attachments/assets/0c76b4d3-27f9-49f0-be98-614769d6cdac" />
 
 
 
@@ -57,7 +51,7 @@ https://kzlabs.com/62.php
 ---
 ## Remediation
 1. Filter out dangerous HTML tags like `<script>`, `<img>`, `<svg>` from the Body field before saving anything to the database
-2. Filter out dangerous Event Handler `<script>`, `<img>`, `<svg>`
+2. Filter out dangerous Event Handler `onerror`, `onload`, `onfocus`
 3. Filter out JavaScript methods like `alert()`, `confirm()`, `prompt()` so even if a tag slips through the method won't execute
 4. If you're using PHP then use `htmlspecialchars()` function before rendering any user input back to the page
 5. Use Cloudflare as they have so many WAF rules that almost all XSS payloads will be blocked automatically before even reaching the server
