@@ -38,7 +38,8 @@ tix5uni'"><script>alert(1)</script>
 
 **Screenshot 1** — Page source showing the returnTo value `tix5uni` reflected raw inside the Continue button href at line 461, with the source comment clearly stating "$returnTo is echoed into the href WITHOUT any validation" and noting that `javascript:alert(document.cookie)` will execute JS when clicked, confirming the vulnerable injection point.
 
-<img width="1250" height="513" alt="lab 57" src="https://github.com/user-attachments/assets/9eef7425-3cd4-4688-a66d-8e5bb2ca3ed9" />
+<img width="1393" height="549" alt="image" src="https://github.com/user-attachments/assets/1b53c82a-33f2-4a4a-837b-34d1e9402d99" />
+
 
 
 **Screenshot 2** — Alert box displaying `1` triggered on the account confirmation page immediately after loading the crafted URL, with the full payload visible in the URL bar confirming reflected XSS execution via the returnTo parameter.
