@@ -1,6 +1,6 @@
 
 ## Title
-Reflected XSS in hidden **cat** parameter 
+Reflected XSS in **cat** parameter 
 
 ## Vulnerability Type
 Reflected XSS
