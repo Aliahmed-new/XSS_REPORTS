@@ -6,7 +6,7 @@ Refelcted (XSS) in Krazeplanet.com
 Reflected XSS
 
 ## Summary
-The krazeplanet page has an XSS vulnerability in its First name feild . whatever you type into the first name feild gets embedded raw into a JavaScript object with no sanitiziation. This means by breaking out of the string context with a quote and injecting JavaScript, the payload runs immediately when the page loads. just a malicious URL and the popup fires.
+The kzlabs.com/punishment page has an XSS vulnerability in its First name feild . whatever you type into the first name feild gets embedded raw into a JavaScript object with no sanitiziation. This means by breaking out of the string context with a quote and injecting JavaScript, the payload runs immediately when the page loads. just a malicious URL and the popup fires.
 
 ## Vulnerable Endpoint
 ```
