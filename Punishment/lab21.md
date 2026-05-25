@@ -1,6 +1,6 @@
 
 ## Title
-Reflected XSS in hidden **hidden** parameter 
+Reflected XSS in  **hidden** parameter 
 
 ## Vulnerability Type
 Reflected XSS
