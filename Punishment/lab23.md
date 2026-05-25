@@ -6,7 +6,7 @@ Reflected XSS in kzlabs.com/punishment/23.php
 Reflected XSS
 
 ## Summary
-The kzlabs.com/punishment page has an Reflected XSS vulnerability in the email parameter . whatever you type into the Gmail feild gets embedded raw into a page response with no sanitization, By injecting an HTML tag with an event handler arbitary JavaScript executes immediately when thye visit crafted URL
+The kzlabs.com/punishment page has an Reflected XSS vulnerability in the email parameter . whatever you type into the Gmail feild gets embedded raw into a page response with no sanitization, By injecting an HTML tag with an event handler arbitary JavaScript executes immediately when they visit crafted URL
 
 ## Vulnerable Endpoint
 ```
