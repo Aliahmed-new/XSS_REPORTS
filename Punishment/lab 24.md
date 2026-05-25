@@ -18,6 +18,7 @@ http://kzlabs.com/punishment/24.php?id=
 https://kzlabs.com/punishment/24.php?id=%22%3E%3CIMG%20src=x%20onerror=alert(1)%3E
 ```
 3.Wait for the page to load
+
 4.An alert popup appears showing 1
 
 
