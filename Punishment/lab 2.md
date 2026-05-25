@@ -6,7 +6,8 @@ Refelcted (XSS) in kzlabs.com/punishment
 Reflected XSS
 
 ## Summary
-The kzlabs.com/punishment page has an XSS vulnerability in its Last name feild . whatever you type into the Last name feild gets embedded raw into a JavaScript object with no sanitiziation. This means by breaking out of the string context with a quote and injecting JavaScript, the payload runs immediately when the page loads. just a malicious URL and the popup fires.
+The kzlabs.com/punishment page has an XSS vulnerability in its Last name feild . whatever you type into the last name feild gets embedded raw into a page response with no sanitization, By injecting an HTML tag with an event handler arbitary JavaScript executes immediately on page load and the popup fires.
+
 
 ## Vulnerable Endpoint
 ```
