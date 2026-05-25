@@ -6,11 +6,11 @@ Refelcted (XSS) in Krazeplanet.com
 Reflected XSS
 
 ## Summary
-I identified a blind XSS in the **company Name Feild** during user registration. The feild accepts and stores raw HTML without any sanitization. The payload does not executes on the user side - it fires silently in the admin panel when an admin views the registered users list.This was confirmed via XSS report which captured a screenshot of the admin panel where the payload executed.
+The krazeplanet page has an XSS vulnerability in its First name feild . whatever you type into the first name feild gets embedded raw into a JavaScript object with no sanitiziation. This means by breaking out of the string context with a quote and injecting JavaScript, the payload runs immediately when the page loads. just a malicious URL and the popup fires.
 
 ## Vulnerable Endpoint
 ```
-http://kzlabs.com/63.php?view=register
+http://kzlabs.com/punishment/1.php
 ```
 
 ## Steps to Reproduce
@@ -20,7 +20,7 @@ http://kzlabs.com/63.php?view=register
 ```
 2. In the **Fname** enter the following XSS payload
 ```
-"><script>alert(1)</script>
+tix5uni"><script>alert(1)</script>
 ```
 3.Wait for the page to load
 4.An alert popup appears showing 1
