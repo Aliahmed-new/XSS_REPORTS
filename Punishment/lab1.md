@@ -3,12 +3,10 @@
 Refelcted (XSS) in Krazeplanet.com
 
 ## Vulnerability Type
-Blind XSS
-
+Reflected XSS
 
 ## Summary
 I identified a blind XSS in the **company Name Feild** during user registration. The feild accepts and stores raw HTML without any sanitization. The payload does not executes on the user side - it fires silently in the admin panel when an admin views the registered users list.This was confirmed via XSS report which captured a screenshot of the admin panel where the payload executed.
-
 
 ## Vulnerable Endpoint
 ```
