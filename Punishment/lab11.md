@@ -41,7 +41,7 @@ tix5uni"><iMg src=x onerror=confirm`1`>
 
 
 
-**Screenshot 2** — Alert box displaying 1 triggered after submitting the payload tix5uni"><IMG src=x onerror=alert(1)> ,with the payload visible in the URL bar  confirming reflected XSS execution in the JavaScript context.
+**Screenshot 2** — Alert box displaying 1 triggered after submitting the payload tix5uni"><iMg src=x onerror=confirm`1`> ,with the payload visible in the URL bar  confirming reflected XSS execution in the JavaScript context.
 
 <img width="1488" height="785" alt="image" src="https://github.com/user-attachments/assets/d2878b37-3d88-4ecf-beae-89745564ede2" />
 
