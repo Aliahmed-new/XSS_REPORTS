@@ -6,7 +6,7 @@ Reflected XSS in hidden **search** parameter
 Reflected XSS
 
 ## Summary
-The kzlabs.com/punishment page has an Reflected XSS vulnerability in the search parameter. whatever you type into the id parameter gets embedded raw into a page response with no sanitization, By injecting an HTML tag with an event handler arbitary JavaScript executes immediately when they visit crafted URL
+The kzlabs.com/punishment page has an Reflected XSS vulnerability in the search parameter. whatever you type into the search parameter gets embedded raw into a page response with no sanitization, By injecting an HTML tag with an event handler arbitary JavaScript executes immediately when they visit crafted URL
 ## Vulnerable Endpoint
 ```
 http://kzlabs.com/punishment/25.php?search=
