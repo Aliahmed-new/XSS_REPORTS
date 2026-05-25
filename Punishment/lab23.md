@@ -1,6 +1,6 @@
 
 ## Title
-Reflected XSS in kzlabs.com/punishment/23.php
+Reflected XSS in **email** parameter
 
 ## Vulnerability Type
 Reflected XSS
