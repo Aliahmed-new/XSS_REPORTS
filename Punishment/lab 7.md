@@ -23,6 +23,7 @@ http://kzlabs.com/punishment/7.php
 tix5uni"><IMG src=x onerror=alert(1)>
 ```
 3.Wait for the page to load
+
 4.An alert popup appears showing 1
 
 
