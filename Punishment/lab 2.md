@@ -10,7 +10,7 @@ The kzlabs.com/punishment page has an XSS vulnerability in its Last name feild .
 
 ## Vulnerable Endpoint
 ```
-http://kzlabs.com/punishment/1.php
+http://kzlabs.com/punishment/2.php
 ```
 
 ## Steps to Reproduce
