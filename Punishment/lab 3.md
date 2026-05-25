@@ -34,16 +34,18 @@ tix5uni"><IMG src=x onerror=alert(1)>
 
 ## Proof of Concept
 
-**Screenshot 1** — Page source showing the search term tix5uni reflected raw .
+**Screenshot 1** — Page source showing the search term tix5uni reflected raw with the payload.
 
-<img width="1373" height="266" alt="image" src="https://github.com/user-attachments/assets/934f21a5-ef93-4ca4-b9fa-fefb65a5b73f" />
-
-
+<img width="1532" height="265" alt="image" src="https://github.com/user-attachments/assets/ba939abb-e556-46d9-9d81-f4f9fdcde184" />
 
 
-**Screenshot 2** — Alert box displaying 1 triggered after submitting the payload tix5uni"><img src=x onerror=alert(1)> ,with the payload visible in the URL bar  confirming reflected XSS execution in the JavaScript context.
 
-<img width="1470" height="429" alt="image" src="https://github.com/user-attachments/assets/17d074e7-c1f7-44d8-b85b-effe1e0fe473" />
+
+
+**Screenshot 2** — Alert box displaying 1 triggered after submitting the payload tix5uni"><IMG src=x onerror=alert(1)> ,with the payload visible in the URL bar  confirming reflected XSS execution in the JavaScript context.
+
+<img width="1407" height="675" alt="image" src="https://github.com/user-attachments/assets/613cce35-0747-4035-b170-3f796b39f74b" />
+
 
 
 
