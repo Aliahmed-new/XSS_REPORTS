@@ -1,6 +1,6 @@
 
 ## Title
-DOM (XSS) in the the path
+DOM (XSS) in the path
 
 ## Vulnerability Type
 DOM XSS
