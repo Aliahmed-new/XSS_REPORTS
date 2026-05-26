@@ -1,6 +1,6 @@
 
 ## Title
-Refelcted (XSS) in kzlabs.com/punishment
+Refelcted (XSS) in first name parameter
 
 ## Vulnerability Type
 Reflected XSS
