@@ -1,17 +1,17 @@
 
 ## Title
-Stored (XSS) in the comment tab
+Stored (XSS) in the User Name, Full Name, and Bio tab
 
 ## Vulnerability Type
 Stored XSS
 
 ## Summary
-The kzlabs.com/punishment page has an XSS vulnerability in comment tab . whatever you type into the it gets embedded raw into a page response with no sanitization, By injecting an HTML tag with an event handler arbitary JavaScript executes immediately on page load and the popup fires.
+The kzlabs.com page has an XSS vulnerability in user Name, Full Name,Bio tab . whatever you type into the it gets embedded raw into a page response with no sanitization, By injecting an HTML tag with an event handler arbitary JavaScript executes immediately on page load and the popup fires.
 
 
 ## Vulnerable Endpoint
 ```
-http://kzlabs.com/18.php
+http://kzlabs.com/19.php
 ```
 
 ## Steps to Reproduce
