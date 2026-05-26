@@ -37,7 +37,7 @@ http://kzlabs.com/65.php
 
 
 
-**Screenshot 1** — Alert box displaying 1 triggered after submitting the payload "><iMg src=x onerror=alert(1)> confirming stored XSS execution in the JavaScript context.
+**Screenshot 1** — Alert box displaying 1 triggered after submitting the payload "><iMg src=x onerror=alert(1)> confirming DOM XSS execution.
 
 <img width="1530" height="881" alt="image" src="https://github.com/user-attachments/assets/a0f536e0-bb1a-4bb0-916e-015ad65558a1" />
 
