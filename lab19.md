@@ -20,16 +20,16 @@ http://kzlabs.com/19.php
 ```
  http://kzlabs.com/19.php?
 ```
-3. create and Log in with your details
+2. create and Log in with your details
    
-4. In the Usertab -Enter the below payload
+3. In the Username -Enter the below payload
 ```
 <script>alert(1)</script>
 ```
 
-3.Wait for the page to load 
+4.Wait for the page to load 
 
-4.An alert popup appears showing 1
+5.An alert popup appears showing 1
 
 
 ## Payload Used
