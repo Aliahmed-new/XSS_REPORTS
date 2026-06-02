@@ -6,7 +6,7 @@ CSRF Password Hijack
 Cross-Site Request Forgery(CSRF)
 
 ## Summary
-The email update functionality on the target application does not implement any CSRF protection. There is no token, or any form of request validation tied to the authenticated session. This means an attacker can craft a malicious HTML page that silently sends a forged email-change request on behalf of a logged-in victim the moment they visit the attacker's page — no interaction needed beyond the page load.oint
+The password update functionality on the target application does not implement any CSRF protection. There is no token, or any form of request validation tied to the authenticated session. This means an attacker can craft a malicious HTML page that silently sends a forged password-change request on behalf of a logged-in victim the moment they visit the attacker's page — no interaction needed.
 ```
 http://kzlabs.in/1308.php?action=settings
 ```
@@ -14,7 +14,7 @@ http://kzlabs.in/1308.php?action=settings
 ## Steps to Reproduce
 1.Create and Log into the application using your credentials
 ```
-http://kzlabs.in/1308.php?action=settings
+http://kzlabs.in/10.php?action=settings
 ```
 2.Navigate to account settings and enter a new email address in the update field
 
