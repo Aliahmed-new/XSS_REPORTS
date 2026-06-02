@@ -64,8 +64,7 @@ url=file:///etc/passwd
 
 **Screenshot 2** — Repeater response showing the full contents of /etc/passwd returned after sending file:///etc/passwd as the webhook URL, contents included system accounts like root, daemon, www-data, sshd and many others
 
-<img width="786" height="777" alt="image" src="https://github.com/user-attachments/assets/bfa12f0b-53b9-471b-b1f4-01a9e09521c5" />
-
+<img width="1887" height="997" alt="image" src="https://github.com/user-attachments/assets/488fe4c7-2324-4908-b6ba-2487d9d46c09" />
 
 
 
