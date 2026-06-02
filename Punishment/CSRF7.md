@@ -20,7 +20,7 @@ http://kzlabs.in/1307.php?action=settings
 
 3.Before submitting, enable Intercept in Burp Suite
 
-4.Click Update Email — the POST request is now captured in Burp
+4.Click change password — the POST request is now captured in Burp
 
 5.Right-click the captured request → Engagement Tools → Generate CSRF PoC
 
