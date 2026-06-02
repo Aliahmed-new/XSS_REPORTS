@@ -24,21 +24,21 @@ Step 1 — Confirming the SSRF with Burp Collaborator:
 ```
 http://kzlabs.in/601.php
 ```
-2 Enter http://google.com
+2.Enter http://google.com
 
 3.Turn on Intercept in Burp and click submit — capture the request
 
 4.Send the request to Repeater and click Send
 
-3.Go to Burp Collaborator and click Copy to Clipboard to get your unique Collaborator URL
+5.Go to Burp Collaborator and click Copy to Clipboard to get your unique Collaborator URL
 
-4.Paste that URL in the repeater request - by adding https://
+6.Paste that URL in the repeater request - by adding https://
 
-5.Go back to Collaborator and click Poll Now
+7.Go back to Collaborator and click Poll Now
 
-6.You will see both DNS and HTTP interactions coming in from the server's IP — this confirms the server is making outbound requests to whatever URL you give it
+8.You will see both DNS and HTTP interactions coming in from the server's IP — this confirms the server is making outbound requests to whatever URL you give it
 
-7.The server IP in Collaborator is different from your own IP which confirms it is the server making the request, not your browser
+9.The server IP in Collaborator is different from your own IP which confirms it is the server making the request, not your browser
 
 
 Step 2 — Exploiting with file:// Protocol:
