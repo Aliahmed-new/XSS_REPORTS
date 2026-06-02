@@ -17,11 +17,17 @@ http://kzlabs.in/1308.php?action=settings
 http://kzlabs.in/1308.php?action=settings
 ```
 2.Navigate to account settings and enter a new email address in the update field
+
 3.Before submitting, enable Intercept in Burp Suite
+
 4.Click Update Email — the POST request is now captured in Burp
+
 5.Right-click the captured request → Engagement Tools → Generate CSRF PoC
+
 6.Copy the generated HTML and save it as a .html file
+
 7.Open the saved file in a regular browser (outside Burp) while still logged into the application
+
 8.The page loads, the forged request fires automatically, and the email address on the account is updated without any user confirmation or token validation
 
 
