@@ -64,7 +64,7 @@ http://kzlabs.in/1309.php?action=settings
 
 
 
-**Screenshot 3** - This is the PoC file opened in the browser, the request fired on its own and the email got changed to the attacker address just like that
+**Screenshot 3** - This is the PoC file opened in the browser, the request fired on its own and the account deletion happend with any information
 
 
 <img width="1781" height="955" alt="image" src="https://github.com/user-attachments/assets/3b6f4fbc-44fe-470d-8528-cbad0732c7ac" />
