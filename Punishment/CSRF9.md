@@ -1,6 +1,6 @@
 
 ## Title
-CSRF Irreveisable Data Deletion Hijack  
+CSRF Account Wipe -Irreveisable Data Deletion Hijack  
 
 ## Vulnerability Type
 Cross-Site Request Forgery(CSRF)
@@ -8,19 +8,19 @@ Cross-Site Request Forgery(CSRF)
 ## Summary
 The account deletion functionality on the target application does not implement any CSRF protection. There is no token, or any form of request validation tied to the authenticated session. This means an attacker can craft a malicious HTML page that silently sends a account deletion request on behalf of a logged-in victim the moment they visit the attacker's page — no interaction needed.
 ```
-http://kzlabs.in/1309.php?action=settings
+http://kzlabs.in/1309.php?action=account
 ```
 
 ## Steps to Reproduce
 1.Create and Log into the application using your credentials
 ```
-http://kzlabs.in/1309.php?action=settings
+http://kzlabs.in/1309.php?action=account
 ```
-2.Navigate to account settings and click account delete
+2.Navigate to My account settings and click Delete my account and Data
 
 3.Before submitting, enable Intercept in Burp Suite
 
-4.Click account delete — the POST request is now captured in Burp
+4.Click Delete my account and data — the POST request is now captured in Burp
 
 5.Right-click the captured request → Engagement Tools → Generate CSRF PoC
 
