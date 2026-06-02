@@ -57,13 +57,18 @@ http://kzlabs.in/1308.php?action=settings
 <img width="758" height="903" alt="image" src="https://github.com/user-attachments/assets/7278accb-bd18-4c10-a282-cee359c92cab" />
 
 
+
 **Screenshot 2** — This is Burp generating the PoC HTML from that captured request
 
 <img width="786" height="777" alt="image" src="https://github.com/user-attachments/assets/bfa12f0b-53b9-471b-b1f4-01a9e09521c5" />
 
-<img width="1906" height="974" alt="image" src="https://github.com/user-attachments/assets/ebdac794-375e-4b67-9119-85c79d801056" />
+
 
 **Screenshot 3** - This is the PoC file opened in the browser, the request fired on its own and the email got changed to the attacker address just like that
+
+
+<img width="1906" height="974" alt="image" src="https://github.com/user-attachments/assets/ebdac794-375e-4b67-9119-85c79d801056" />
+
 
 <img width="1902" height="948" alt="image" src="https://github.com/user-attachments/assets/3564387b-af90-4d22-9d0e-2754fde93826" />
 
