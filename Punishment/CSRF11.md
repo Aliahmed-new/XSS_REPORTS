@@ -8,7 +8,7 @@ Cross-Site Request Forgery(CSRF)
 ## Summary
 The Disable Two-Factor Authentication functionality on the target application does not implement any CSRF protection. There is no token, or any form of request validation tied to the authenticated session. This means an attacker can craft a malicious HTML page that silently sends a Disable Two-Factor Authentication request on behalf of a logged-in victim the moment they visit the attacker's page — no interaction needed.
 ```
-http://kzlabs.in/1309.php?action=security
+http://kzlabs.in/1311.php?action=security
 ```
 
 ## Steps to Reproduce
