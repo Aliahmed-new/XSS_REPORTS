@@ -6,7 +6,7 @@ CSRF Email Hijack
 Cross-Site Request Forgery(CSRF)
 
 ## Summary
-The email update functionality on the target application does not implement any CSRF protection. There is no token, or any form of request validation tied to the authenticated session. This means an attacker can craft a malicious HTML page that silently sends a forged email-change request on behalf of a logged-in victim the moment they visit the attacker's page — no interaction needed beyond the page load.oint
+The email update functionality on the target application does not implement any CSRF protection. There is no token, or any form of request validation tied to the authenticated session. This means an attacker can craft a malicious HTML page that silently sends a forged email-change request on behalf of a logged-in victim the moment they visit the attacker's page — no interaction needed beyond the page load.
 ```
 http://kzlabs.in/1308.php?action=settings
 ```
