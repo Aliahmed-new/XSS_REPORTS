@@ -77,5 +77,5 @@ url=file:///etc/passwd
 ## Remediation
 1. Only allow https:// and http:// protocols and block everything else like file://, gopher://, ftp:// completely
 2. Block requests to internal IP ranges like 127.0.0.1, 169.254.x.x, and 10.x.x.x so the server cant be used to probe internal services
-3. Never return the raw response from a fetched URL back to the user — just return a success or failure message so even if SSRF exists the attacker cant read the output
-4. Validate and whitelist URLs on the server side — only allow requests to go to specific trusted domains, block everything else
+3. Never return the raw response from a fetched URL back to the user and use cookie attribute
+4. Validate and whitelist URLs on the server side 
